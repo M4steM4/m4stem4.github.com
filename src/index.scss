@@ -1,0 +1,327 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+$value: #999;
+$sky: #E0FFFF;
+$grass: #ccf370;
+$soil: #B8860B;
+
+%width10 {
+    width: 10%;
+}
+
+%width100 {
+    width: 100%;
+}
+
+#monster {
+    left: 50%;
+    top: 70%;
+    position: fixed;
+    z-index: 10;
+}
+
+#sky {
+    display: block;
+    height: 80%;
+    background-color: $sky;
+    @extend %width10;
+}
+
+#sky:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+#ground {
+    height: 20%;
+    @extend %width10;
+}
+
+.grass {
+    height: 25%;
+    background-color: $grass;
+    border-top: 2px solid #83a250;
+    @extend %width100;
+}
+
+.soil {
+    height: 75%;
+    background: $soil;
+    @extend %width100;
+}
+
+.main {
+    position: absolute;
+    width: 1000%;
+    height: 100%;
+}
+
+.tree {
+    width: 100px;
+    height: 200px;
+    position: relative;
+    top: calc(100% - 200px);
+}
+
+.tree:last-child {
+    left: 40%;
+    top: calc(100% - 400px);
+}
+
+$leaf-line1: #869832;
+$leaf-line2: #798c2a;
+
+.leaf {
+    height: 70%;
+    div {
+        width: 100%;
+        height: 20%;
+        position: relative;
+        background-color: $leaf-line1;
+        &:nth-child(2n) {
+            background-color: $leaf-line2;
+        }
+    }
+}
+
+.stem {
+    width: 40%;
+    height: 30%;
+    position: relative;
+    left: 30%;
+    background-color: darken(#8B4513, 10%);
+}
+
+
+
+.toy-train {
+  position: relative;
+  left: 30%;
+  top: 30%;
+  margin-left: -100px;
+  margin-top: -15px;
+  width: 105px;
+  transform: scale(1.4);
+}
+
+.engine {
+  float: right;
+  position: relative;
+}
+
+.window {
+  height: 30px;
+  width: 30px;
+  background-color: #194488; //mid color
+  position: relative;
+
+  border: 3px solid #000;
+}
+.window:before, .window:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  border: 3px solid #000;
+}
+.window:before {
+  height: 7px;
+  background-color: #F82510;
+  width: 40px;
+  margin-top: -13px;
+  margin-left: -23px;
+  border-radius: 10px;
+}
+.window:after {
+  margin-left: -8px;
+  margin-top: 4px;
+  border-radius: 50%;
+  height: 11px;
+  width: 11px;
+  background-color: #fff;
+}
+
+.engine-main {
+  height: 15px;
+  width: 35px;
+  border: 3px solid #000;
+  background-color: #3D9A01;
+  position: absolute;
+  border-radius: 0 8px 8px 0;
+  right: -41px;
+  bottom: -3px;
+}
+.engine-main:before {
+  content: "";
+  height: 10px;
+  width: 8px;
+  background-color: #000;
+  position: absolute;
+  top: -11px;
+  left: 4px;
+  transform: rotate(180deg);
+  border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
+}
+.engine-main:after {
+  content: "";
+  height: 12px;
+  width: 8px;
+  position: absolute;
+  display: block;
+  right: 5px;
+  top: -18px;
+  border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
+  transform: rotate(180deg);
+  z-index: -1;
+  background-color: #194488;
+  border: 3px solid #000;
+}
+
+.engine-body {
+  height: 17px;
+  width: 75px;
+  position: absolute;
+  left: -2px;
+  top: 30px;
+  background-color: #F69F00;
+  border: 3px solid #000;
+  border-radius: 5px;
+}
+.engine-body .big-wheel {
+  top: 3px;
+  left: 4px;
+}
+.engine-body .normal-wheel {
+  left: 45px;
+  top: 5px;
+}
+.engine-body:before {
+  content: "";
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  left: -11px;
+  bottom: 2px;
+  z-index: -1;
+  background-color: #fff;
+  border-radius: 50%;
+  border: 3px solid #000;
+}
+
+.wheels > div {
+  position: absolute;
+  background-color: #F82510;
+  border-radius: 50%;
+  border: 3px solid #000;
+  animation: wheel-rotate 1s linear infinite;
+}
+.wheels > div:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  border-bottom: 1px solid #000;
+  top: 50%;
+  margin-top: -1px;
+}
+.wheels > div:after {
+  content: "";
+  height: 6px;
+  width: 6px;
+  position: absolute;
+  background-color: #000;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  margin-left: -3px;
+  margin-top: -3px;
+}
+
+.wheels .big-wheel {
+  width: 22px;
+  height: 22px;
+  animation-delay: -0.3s;
+}
+
+.wheels .normal-wheel {
+  height: 20px;
+  width: 20px;
+  animation-delay: -0.6s;
+}
+
+.locomotive {
+  height: 35px;
+  width: 60px;
+  border: 3px solid #000;
+  background-color: #F69F00;
+  border-radius: 5px;
+  position: relative;
+  float: left;
+  margin-top: 13px;
+}
+
+.locomotive .wheels > div {
+  top: 22px;
+  animation-delay: -0.6s;
+}
+.locomotive .wheels > div:first-child {
+  animation-delay: -0.6s;
+}
+.locomotive .normal-wheel:first-of-type {
+  left: 2px;
+}
+.locomotive .normal-wheel:last-of-type {
+  right: 2px;
+}
+//바꿀거
+.locomotive .trash {
+  height: 35px;
+  width: 50px;
+  position: absolute;
+  top: -18px;
+  border: 3px solid #000;
+  background-color: #3D9A01;
+  border-radius: 20%;
+  left: 2px;
+  z-index: -1;
+}
+
+.smokes:before, .smokes:after,
+.smokes span:before {
+  display: block;
+  content: "";
+  height: 10px;
+  width: 10px;
+  background-color: #ffe;
+  border-radius: 50%;
+  position: absolute;
+  right: 7px;
+  top: 20px;
+  z-index: -1;
+}
+.smokes:before {
+  animation: smoke 1s linear infinite;
+}
+.smokes span:before {
+  animation: smoke 1s linear infinite;
+  animation-delay: -0.6s;
+}
+.smokes:after {
+  animation: smoke 1s linear infinite;
+  animation-delay: -0.3s;
+}
+
+@keyframes smoke {
+  100% {
+    top: -60px;
+    opacity: 0.5;
+  }
+}
+@keyframes wheel-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
