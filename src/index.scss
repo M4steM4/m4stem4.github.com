@@ -7,321 +7,711 @@
 $value: #999;
 $sky: #E0FFFF;
 $grass: #ccf370;
-$soil: #B8860B;
+$road: #545965;
+$leaf-line1: #869832;
+$leaf-line2: #798c2a;
 
-%width10 {
-    width: 10%;
+
+#main {
+    position: absolute;
+    width: 20000px;
+    height: 100%;
 }
 
-%width100 {
-    width: 100%;
+#spring {
+    width: 25%;
+    height: 100%;
 }
 
-#monster {
-    left: 50%;
-    top: 70%;
-    position: fixed;
-    z-index: 10;
-}
-
-#sky {
+#background {
     display: block;
-    height: 80%;
+    height: 70%;
+    width: 100%;
     background-color: $sky;
-    @extend %width10;
 }
 
-#sky:after {
+#background:after {
     content: "";
     display: table;
     clear: both;
 }
 
-#ground {
-    height: 20%;
-    @extend %width10;
-}
-
-.grass {
-    height: 25%;
-    background-color: $grass;
-    border-top: 2px solid #83a250;
-    @extend %width100;
-}
-
-.soil {
-    height: 75%;
-    background: $soil;
-    @extend %width100;
-}
-
-.main {
-    position: absolute;
-    width: 1000%;
-    height: 100%;
-}
-
-.tree {
-    width: 100px;
-    height: 200px;
-    position: relative;
-    top: calc(100% - 200px);
-}
-
-.tree:last-child {
-    left: 40%;
-    top: calc(100% - 400px);
-}
-
-$leaf-line1: #869832;
-$leaf-line2: #798c2a;
-
-.leaf {
-    height: 70%;
-    div {
-        width: 100%;
-        height: 20%;
-        position: relative;
-        background-color: $leaf-line1;
-        &:nth-child(2n) {
-            background-color: $leaf-line2;
-        }
+#road {
+    display: block;
+    height: 30%;
+    width: 100%;
+    #welcome {
+        color: lighten(#7c8399, 40%);
+        font-size: 400%;
+        position: absolute;
+        margin-top: 20px;
+        margin-left: 1%;
     }
 }
 
-.stem {
-    width: 40%;
-    height: 30%;
-    position: relative;
-    left: 30%;
-    background-color: darken(#8B4513, 10%);
+
+
+.grass {
+    height: 20%;
+    background-color: $grass;
+    border-top: 2px solid #83a250;
+    width: 100%;
+}
+
+.route {
+    height: 60%;
+    background: $road;
+    width: 100%;
+}
+
+
+@mixin leaf() {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    border-width: 15px 12px;
+    border-style: solid;
+}
+
+.triangular-tree {
+    width: 86px;
+    height: 102px;
+    position: absolute;
+    top: 60%;
+    left: 10px;
+    transform: scale(0.9, 1.3);
+    z-index: 2;
+}
+
+$spring-leaf1: #5bab30;
+$spring-leaf2: #378918;
+$spring-leaf3: #5eab31;
+$spring-leaf4: #358915;
+$spring-leaf5: #a3cd3a;
+$spring-leaf6: #abd048;
+$spring-leaf7: #a4cf37;
+$spring-leaf8: #58a72f;
+
+@mixin leafColor($border-color) {
+    content: "";
+    bottom: 0;
+    border-color: transparent transparent #{$border-color} transparent;
+};
+
+
+
+.triangular-tree .tree .part {
+    position: absolute;
+    left: 30px;
+}
+.triangular-tree .tree .triangle {
+    @include leaf();
+}
+.triangular-tree .tree .part1 {
+    top: -15px;
+    z-index: 300;
+}
+.triangular-tree .tree .part1 .top {
+    border-color: transparent transparent #a4ce3d transparent;
+}
+.triangular-tree .tree .part1 .bottom {
+    border-color: #348817 transparent transparent transparent;
+    top: 30px;
 }
 
 
 
+
+.triangular-tree .tree .part1 .bottom:after {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    right: -24px;
+}
+.triangular-tree .tree .part1 .bottom:before {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    left: -24px;
+}
+.triangular-tree .tree .part2 {
+    top: 29px;
+    z-index: 200;
+}
+.triangular-tree .tree .part2 .top {
+    border-color: #3c8b19 transparent transparent transparent;
+}
+.triangular-tree .tree .part2 .top:after {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    right: -24px;
+}
+.triangular-tree .tree .part2 .top:before {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    left: -24px;
+}
+.triangular-tree .tree .part2 .bottom {
+    border-color: #a9d045 transparent transparent  transparent;
+    bottom: -45px;
+    right: -36px;
+}
+.triangular-tree .tree .part2 .bottom:after {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    right: -24px;
+}
+.triangular-tree .tree .part2 .bottom:before {
+    @include leaf();
+    @include leafColor($spring-leaf2);
+    left: -24px;
+}
+.triangular-tree .tree .part2 .bottom2 {
+    border-color: #a9d045 transparent transparent  transparent;
+    bottom: -45px;
+    right: -12px;
+}
+.triangular-tree .tree .part2 .bottom2:after {
+    @include leaf();
+    @include leafColor($spring-leaf3);
+    right: 0;
+}
+.triangular-tree .tree .part3 {
+    top: 44px;
+    z-index: 100;
+}
+.triangular-tree .tree .part3 .top {
+    border-color: #3c8b19 transparent transparent transparent;
+}
+.triangular-tree .tree .part3 .top:after {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    right: -24px;
+}
+.triangular-tree .tree .part3 .top:before {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    left: -24px;
+}
+.triangular-tree .tree .part3 .bottom {
+    border-color: $spring-leaf4 transparent transparent  transparent;
+    bottom: -45px;
+    right: -36px;
+}
+.triangular-tree .tree .part3 .bottom:after {
+    @include leaf();
+    @include leafColor($spring-leaf4);
+    right: -24px;
+}
+.triangular-tree .tree .part3 .bottom:before {
+    @include leaf();
+    @include leafColor($spring-leaf6);
+    left: -24px;
+}
+.triangular-tree .tree .part3 .bottom2 {
+    border-color: #5ba831 transparent transparent  transparent;
+    bottom: -45px;
+    right: -12px;
+}
+.triangular-tree .tree .part3 .bottom2:after {
+    @include leaf();
+    @include leafColor($spring-leaf5);
+    right: 0;
+}
+.triangular-tree .tree .part3 .bottom3 {
+    border-color: #5cac31 transparent transparent  transparent;
+    bottom: -60px;
+    right: -48px;
+}
+.triangular-tree .tree .part3 .bottom3:after {
+    @include leaf();
+    @include leafColor($spring-leaf1);
+    right: -24px;
+}
+.triangular-tree .tree .part3 .bottom3:before {
+    @include leaf();
+    @include leafColor($spring-leaf2);
+    left: -24px;
+}
+.triangular-tree .tree .part3 .bottom4 {
+    border-color: #5aab32 transparent transparent  transparent;
+    bottom: -60px;
+    right: -24px;
+}
+.triangular-tree .tree .part3 .bottom4:after {
+    @include leaf();
+    @include leafColor($spring-leaf7);
+    right: 0;
+}
+.triangular-tree .tree .part3 .bottom5 {
+    border-color: $spring-leaf8 transparent transparent  transparent;
+    bottom: -60px;
+    right: 0;
+}
+.triangular-tree .tree .part3 .bottom5:after {
+    @include leaf();
+    @include leafColor($spring-leaf8);
+    right: 0;
+}
+.triangular-tree .base {
+    width: 11px;
+    height: 13px;
+    background: #c99c71;
+    position: absolute;
+    bottom: 0;
+    left: 32px;
+}
+.triangular-tree .base:after {
+    content: "";
+    position: absolute;
+    left: 11px;
+    width: 11px;
+    height: 13px;
+    background: #736457;
+}
+
+$temp-width: 0;
+
+@mixin setTree($left, $top, $size){
+    left: $left + 0px;
+    $top: $top + 0px;
+    top: calc(54% + #{$top});
+    transform: scaleY($size);
+}
+
+.triangular-tree:nth-child(1) {
+    @include setTree(100, 10, 1.4);
+}
+.triangular-tree:nth-child(2) {
+    @include setTree(240, 20, 1.3);
+}
+.triangular-tree:nth-child(3) {
+    @include setTree(300, 30, 1.1);
+}
+.triangular-tree:nth-child(4) {
+    @include setTree(500, 10, 1.5);
+}
+.triangular-tree:nth-child(5) {
+    @include setTree(800, 30, 1.2);
+}
+.triangular-tree:nth-child(6) {
+    @include setTree(860, 20, 1.3);
+}
+.triangular-tree:nth-child(7) {
+    @include setTree(1000, 20, 1.2);
+}
+.triangular-tree:nth-child(8) {
+    @include setTree(1100, 10, 1.4);
+}
+.triangular-tree:nth-child(9) {
+    @include setTree(1240, 30, 1.2);
+}
+.triangular-tree:nth-child(10) {
+    @include setTree(1700, 40, 1.0);
+}
+.triangular-tree:nth-child(11) {
+    @include setTree(2100, 30, 1.1);
+}
+.triangular-tree:nth-child(12) {
+    @include setTree(2250, 20, 1.3);
+}
+.triangular-tree:nth-child(13) {
+    @include setTree(2340, 30, 1.2);
+}
+.triangular-tree:nth-child(14) {
+    @include setTree(2700, 10, 1.5);
+}
+.triangular-tree:nth-child(15) {
+    @include setTree(2930, 10, 1.4);
+}
+
+
+
+
+
+
+
+#train {
+    left: 50%;
+    top: 75%;
+    position: fixed;
+    z-index: 10;
+    transform: rotateY(0);
+}
+
 .toy-train {
-  position: relative;
-  left: 30%;
-  top: 30%;
-  margin-left: -100px;
-  margin-top: -15px;
-  width: 105px;
-  transform: scale(1.4);
+    position: relative;
+    left: 30%;
+    top: 30%;
+    margin-left: -100px;
+    margin-top: -15px;
+    width: 105px;
+    transform: scale(1.4);
 }
 
 .engine {
-  float: right;
-  position: relative;
+    float: right;
+    position: relative;
 }
 
 .window {
-  height: 30px;
-  width: 30px;
-  background-color: #194488; //mid color
-  position: relative;
+    height: 30px;
+    width: 30px;
+    background-color: #194488; //mid color
+    position: relative;
 
-  border: 3px solid #000;
+    border: 3px solid #000;
 }
 .window:before, .window:after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  border: 3px solid #000;
+    content: "";
+    position: absolute;
+    left: 50%;
+    border: 3px solid #000;
 }
 .window:before {
-  height: 7px;
-  background-color: #F82510;
-  width: 40px;
-  margin-top: -13px;
-  margin-left: -23px;
-  border-radius: 10px;
+    height: 7px;
+    background-color: #F82510;
+    width: 40px;
+    margin-top: -13px;
+    margin-left: -23px;
+    border-radius: 10px;
 }
 .window:after {
-  margin-left: -8px;
-  margin-top: 4px;
-  border-radius: 50%;
-  height: 11px;
-  width: 11px;
-  background-color: #fff;
+    margin-left: -8px;
+    margin-top: 4px;
+    border-radius: 50%;
+    height: 11px;
+    width: 11px;
+    background-color: #fff;
 }
 
 .engine-main {
-  height: 15px;
-  width: 35px;
-  border: 3px solid #000;
-  background-color: #3D9A01;
-  position: absolute;
-  border-radius: 0 8px 8px 0;
-  right: -41px;
-  bottom: -3px;
+    height: 15px;
+    width: 35px;
+    border: 3px solid #000;
+    background-color: #3D9A01;
+    position: absolute;
+    border-radius: 0 8px 8px 0;
+    right: -41px;
+    bottom: -3px;
 }
 .engine-main:before {
-  content: "";
-  height: 10px;
-  width: 8px;
-  background-color: #000;
-  position: absolute;
-  top: -11px;
-  left: 4px;
-  transform: rotate(180deg);
-  border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
+    content: "";
+    height: 10px;
+    width: 8px;
+    background-color: #000;
+    position: absolute;
+    top: -11px;
+    left: 4px;
+    transform: rotate(180deg);
+    border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
 }
 .engine-main:after {
-  content: "";
-  height: 12px;
-  width: 8px;
-  position: absolute;
-  display: block;
-  right: 5px;
-  top: -18px;
-  border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
-  transform: rotate(180deg);
-  z-index: -1;
-  background-color: #194488;
-  border: 3px solid #000;
+    content: "";
+    height: 12px;
+    width: 8px;
+    position: absolute;
+    display: block;
+    right: 5px;
+    top: -18px;
+    border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
+    transform: rotate(180deg);
+    z-index: -1;
+    background-color: #194488;
+    border: 3px solid #000;
 }
 
 .engine-body {
-  height: 17px;
-  width: 75px;
-  position: absolute;
-  left: -2px;
-  top: 30px;
-  background-color: #F69F00;
-  border: 3px solid #000;
-  border-radius: 5px;
+    height: 17px;
+    width: 75px;
+    position: absolute;
+    left: -2px;
+    top: 30px;
+    background-color: #F69F00;
+    border: 3px solid #000;
+    border-radius: 5px;
 }
 .engine-body .big-wheel {
-  top: 3px;
-  left: 4px;
+    top: 3px;
+    left: 4px;
 }
 .engine-body .normal-wheel {
-  left: 45px;
-  top: 5px;
+    left: 45px;
+    top: 5px;
 }
 .engine-body:before {
-  content: "";
-  position: absolute;
-  height: 5px;
-  width: 5px;
-  left: -11px;
-  bottom: 2px;
-  z-index: -1;
-  background-color: #fff;
-  border-radius: 50%;
-  border: 3px solid #000;
+    content: "";
+    position: absolute;
+    height: 5px;
+    width: 5px;
+    left: -11px;
+    bottom: 2px;
+    z-index: -1;
+    background-color: #fff;
+    border-radius: 50%;
+    border: 3px solid #000;
 }
 
 .wheels > div {
-  position: absolute;
-  background-color: #F82510;
-  border-radius: 50%;
-  border: 3px solid #000;
-  animation: wheel-rotate 1s linear infinite;
+    position: absolute;
+    background-color: #F82510;
+    border-radius: 50%;
+    border: 3px solid #000;
+    animation: wheel-rotate 1s linear infinite;
 }
 .wheels > div:before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  border-bottom: 1px solid #000;
-  top: 50%;
-  margin-top: -1px;
+    content: "";
+    position: absolute;
+    width: 100%;
+    border-bottom: 1px solid #000;
+    top: 50%;
+    margin-top: -1px;
 }
 .wheels > div:after {
-  content: "";
-  height: 6px;
-  width: 6px;
-  position: absolute;
-  background-color: #000;
-  border-radius: 50%;
-  left: 50%;
-  top: 50%;
-  margin-left: -3px;
-  margin-top: -3px;
+    content: "";
+    height: 6px;
+    width: 6px;
+    position: absolute;
+    background-color: #000;
+    border-radius: 50%;
+    left: 50%;
+    top: 50%;
+    margin-left: -3px;
+    margin-top: -3px;
 }
 
 .wheels .big-wheel {
-  width: 22px;
-  height: 22px;
-  animation-delay: -0.3s;
+    width: 22px;
+    height: 22px;
+    animation-delay: -0.3s;
 }
 
 .wheels .normal-wheel {
-  height: 20px;
-  width: 20px;
-  animation-delay: -0.6s;
+    height: 20px;
+    width: 20px;
+    animation-delay: -0.6s;
 }
 
 .locomotive {
-  height: 35px;
-  width: 60px;
-  border: 3px solid #000;
-  background-color: #F69F00;
-  border-radius: 5px;
-  position: relative;
-  float: left;
-  margin-top: 13px;
+    height: 35px;
+    width: 60px;
+    border: 3px solid #000;
+    background-color: #F69F00;
+    border-radius: 5px;
+    position: relative;
+    float: left;
+    margin-top: 13px;
 }
 
 .locomotive .wheels > div {
-  top: 22px;
-  animation-delay: -0.6s;
+    top: 22px;
+    animation-delay: -0.6s;
 }
 .locomotive .wheels > div:first-child {
-  animation-delay: -0.6s;
+    animation-delay: -0.6s;
 }
 .locomotive .normal-wheel:first-of-type {
-  left: 2px;
+    left: 2px;
 }
 .locomotive .normal-wheel:last-of-type {
-  right: 2px;
+    right: 2px;
 }
 //바꿀거
 .locomotive .trash {
-  height: 35px;
-  width: 50px;
-  position: absolute;
-  top: -18px;
-  border: 3px solid #000;
-  background-color: #3D9A01;
-  border-radius: 20%;
-  left: 2px;
-  z-index: -1;
+    height: 35px;
+    width: 50px;
+    position: absolute;
+    top: -18px;
+    border: 3px solid #000;
+    background-color: #3D9A01;
+    border-radius: 20%;
+    left: 2px;
+    z-index: -1;
 }
 
 .smokes:before, .smokes:after,
 .smokes span:before {
-  display: block;
-  content: "";
-  height: 10px;
-  width: 10px;
-  background-color: #ffe;
-  border-radius: 50%;
-  position: absolute;
-  right: 7px;
-  top: 20px;
-  z-index: -1;
+    display: block;
+    content: "";
+    height: 10px;
+    width: 10px;
+    background-color: #ffe;
+    border-radius: 50%;
+    position: absolute;
+    right: 7px;
+    top: 20px;
+    z-index: -1;
 }
 .smokes:before {
-  animation: smoke 1s linear infinite;
+    animation: smoke 1s linear infinite;
 }
 .smokes span:before {
-  animation: smoke 1s linear infinite;
-  animation-delay: -0.6s;
+    animation: smoke 1s linear infinite;
+    animation-delay: -0.6s;
 }
 .smokes:after {
-  animation: smoke 1s linear infinite;
-  animation-delay: -0.3s;
+    animation: smoke 1s linear infinite;
+    animation-delay: -0.3s;
 }
 
 @keyframes smoke {
-  100% {
-    top: -60px;
-    opacity: 0.5;
-  }
+    100% {
+        top: -60px;
+        opacity: 0.5;
+    }
 }
 @keyframes wheel-rotate {
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+/** BASIC **/
+.center {
+    height: 70%;
+    width: 4%;
+    position: absolute;
+    left: 1%;
+    top: 10%;
+    color: #fffd7c;
+    z-index: 1;
+}
+
+.flag-text {
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 3px;
+    font-size: 250%;
+}
+/** FLAG **/
+.flag-container {
+    height: 230px;
+    position: relative;
+}
+
+.pole {
+    background: rgb(224, 224, 224);
+    display: block;
+    height: 390px;
+    position: relative;
+    transform: skew(20deg,0deg);
+    width: 10px;
+}
+
+.knob {
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: block;
+    height: 18px;
+    position: absolute;
+    top: -17px;
+    left: -81px;
+    width: 20px;
+}
+
+.flag {
+    background: rgb(66,66,66);
+    display: block;
+    position: absolute;
+    padding-top: 5%;
+    padding-left: 6%;
+    transform: skew(20deg,0deg);
+}
+
+.flag.front {
+    left: -44px;
+    height: 120px;
+    overflow: hidden;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+.flag.back {
+    background: rgb(44, 44, 44);
+    width: 100px;
+    height: 110px;
+    top: 45px;
+    left: calc(100% - 74px);
+    z-index: 5;
+
+    .shadow {
+        border-color: rgb(22, 22, 22) transparent transparent transparent;
+        border-style: solid;
+        border-width: 35px 45px 0 0;
+        left: 0;
+        bottom: 0;
+        width: 0;
+        height: 0;
+        position: absolute;
+        z-index: 15;
+    }
+}
+
+$bush-color: #6B8E23;
+$bush-top: 69%;
+
+
+
+
+.bush {
+    width: 27px;
+    height: 43px;
+    position: absolute;
+    top: 69%;
+    left: 19px;
+    z-index: 100;
+    .base {
+        width: 42px;
+        height: 11px;
+        background: $bush-color;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        position: absolute;
+        span {
+            position: absolute;
+            border: 10px solid #ea6d23;
+            border-color: transparent transparent $bush-color transparent;
+            transform-origin: bottom center;
+            top: -16px;
+            left: 0;
+            &:after {
+                content: "";
+                position: absolute;
+                border: 10px solid #ea6d23;
+                border-color: transparent transparent $bush-color transparent;
+                transform-origin: bottom center;
+                top: -10px;
+                left: -1px;
+            }
+            &:before {
+                content: "";
+                position: absolute;
+                border: 10px solid #ea6d23;
+                border-color: transparent transparent $bush-color transparent;
+                transform-origin: bottom center;
+                top: -10px;
+                left: 10px;
+            }
+        }
+    }
+}
+
+@mixin setBushLocation($top, $left) {
+    $top: $top + 0px;
+    $left: $left + 0px;
+    top: calc(69% + $top);
+    left: $left;
+}
+
+.bush:nth-child(1) {
+    @include setBushLocation(10, 39);
+}
+.bush:last-child {
+    @include setBushLocation(20, 150);
+}
+
+.bush:nth-child(2) {
+    @include setBushLocation(20, 139);
 }
