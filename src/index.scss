@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    max-height: 700px;
 }
 
 $value: #999;
@@ -92,13 +93,12 @@ $spring-leaf6: #abd048;
 $spring-leaf7: #a4cf37;
 $spring-leaf8: #58a72f;
 
+
 @mixin leafColor($border-color) {
     content: "";
     bottom: 0;
     border-color: transparent transparent #{$border-color} transparent;
 };
-
-
 
 .triangular-tree .tree .part {
     position: absolute;
@@ -268,64 +268,169 @@ $spring-leaf8: #58a72f;
     background: #736457;
 }
 
-$temp-width: 0;
-
 @mixin setTree($left, $top, $size){
     left: $left + 0px;
-    $top: $top + 0px;
+    $top: $top/7 + 0%;
     top: calc(54% + #{$top});
     transform: scaleY($size);
 }
 
-.triangular-tree:nth-child(1) {
+.line1 .triangular-tree:nth-child(1) {
     @include setTree(100, 10, 1.4);
 }
-.triangular-tree:nth-child(2) {
+.line1 .triangular-tree:nth-child(2) {
     @include setTree(240, 20, 1.3);
 }
-.triangular-tree:nth-child(3) {
+.line1 .triangular-tree:nth-child(3) {
     @include setTree(300, 30, 1.1);
 }
-.triangular-tree:nth-child(4) {
+.line1 .triangular-tree:nth-child(4) {
     @include setTree(500, 10, 1.5);
 }
-.triangular-tree:nth-child(5) {
+.line1 .triangular-tree:nth-child(5) {
     @include setTree(800, 30, 1.2);
 }
-.triangular-tree:nth-child(6) {
+.line1 .triangular-tree:nth-child(6) {
     @include setTree(860, 20, 1.3);
 }
-.triangular-tree:nth-child(7) {
+.line1 .triangular-tree:nth-child(7) {
     @include setTree(1000, 20, 1.2);
 }
-.triangular-tree:nth-child(8) {
+.line1 .triangular-tree:nth-child(8) {
     @include setTree(1100, 10, 1.4);
 }
-.triangular-tree:nth-child(9) {
+.line1 .triangular-tree:nth-child(9) {
     @include setTree(1240, 30, 1.2);
 }
-.triangular-tree:nth-child(10) {
-    @include setTree(1700, 40, 1.0);
+.line1 .triangular-tree:nth-child(10) {
+    @include setTree(1400, 40, 1.0);
 }
-.triangular-tree:nth-child(11) {
-    @include setTree(2100, 30, 1.1);
+.line1 .triangular-tree:nth-child(11) {
+    @include setTree(1700, 30, 1.1);
 }
-.triangular-tree:nth-child(12) {
-    @include setTree(2250, 20, 1.3);
+.line1 .triangular-tree:nth-child(12) {
+    @include setTree(1850, 20, 1.3);
 }
-.triangular-tree:nth-child(13) {
-    @include setTree(2340, 30, 1.2);
+.line1 .triangular-tree:nth-child(13) {
+    @include setTree(2040, 30, 1.2);
 }
-.triangular-tree:nth-child(14) {
-    @include setTree(2700, 10, 1.5);
+.line1 .triangular-tree:nth-child(14) {
+    @include setTree(2200, 10, 1.5);
 }
-.triangular-tree:nth-child(15) {
-    @include setTree(2930, 10, 1.4);
+.line1 .triangular-tree:nth-child(15) {
+    @include setTree(2430, 10, 1.4);
+}
+.line1 .triangular-tree:nth-child(16) {
+    @include setTree(2530, 20, 1.4);
+}
+.line1 .triangular-tree:nth-child(17) {
+    @include setTree(2740, 30, 1.1);
+}
+.line1 .triangular-tree:nth-child(18) {
+    @include setTree(2930, 10, 1.5);
+}
+.line1 .triangular-tree:nth-child(19) {
+    @include setTree(3010, 20, 1.3);
+}
+.line1 .triangular-tree:nth-child(20) {
+    @include setTree(3120, 20, 1.1);
+}
+.line1 .triangular-tree:nth-child(21) {
+    @include setTree(3310, 30, 1.2);
+}
+.line1 .triangular-tree:nth-child(22) {
+    @include setTree(3590, 40, 1.1);
+}
+.line1 .triangular-tree:nth-child(23) {
+    @include setTree(3700, 10, 1.4);
+}
+.line1 .triangular-tree:nth-child(24) {
+    @include setTree(3830, 10, 1.3);
+}
+.line1 .triangular-tree:nth-child(25) {
+    @include setTree(4000, 20, 1.2);
+}
+.line1 .triangular-tree:nth-child(26) {
+    @include setTree(4100, 30, 1.2);
+}
+.line1 .triangular-tree:nth-child(27) {
+    @include setTree(4250, 30, 1.4);
+}
+.line1 .triangular-tree:nth-child(28) {
+    @include setTree(4500, 20, 1.1);
+}
+.line1 .triangular-tree:nth-child(29) {
+    @include setTree(4620, 10, 1.5);
+}
+.line1 .triangular-tree:nth-child(30) {
+    @include setTree(4900, 20, 1.3);
 }
 
+.line2 > div {
+    opacity: 0.8;
+    z-index: 300;
+}
 
-
-
+.line2 .triangular-tree:nth-child(1) {
+    @include setTree(50, 180, 1.3);
+}
+.line2 .triangular-tree:nth-child(2) {
+    @include setTree(100, 200, 1.2);
+}
+.line2 .triangular-tree:nth-child(3) {
+    @include setTree(300, 200, 1.1);
+}
+.line2 .triangular-tree:nth-child(4) {
+    @include setTree(800, 190, 1.2);
+}
+.line2 .triangular-tree:nth-child(5) {
+    @include setTree(1000, 180, 1.4);
+}
+.line2 .triangular-tree:nth-child(6) {
+    @include setTree(1300, 170, 1.2);
+}
+.line2 .triangular-tree:nth-child(7) {
+    @include setTree(1400, 190, 1.1);
+}
+.line2 .triangular-tree:nth-child(8) {
+    @include setTree(1800, 180, 1.5);
+}
+.line2 .triangular-tree:nth-child(9) {
+    @include setTree(1850, 180, 1.4);
+}
+.line2 .triangular-tree:nth-child(10) {
+    @include setTree(1940, 170, 1.3);
+}
+.line2 .triangular-tree:nth-child(11) {
+    @include setTree(2100, 190, 1.3);
+}
+.line2 .triangular-tree:nth-child(12) {
+    @include setTree(2300, 200, 1.2);
+}
+.line2 .triangular-tree:nth-child(13) {
+    @include setTree(2600, 180, 1.2);
+}
+.line2 .triangular-tree:nth-child(14) {
+    @include setTree(3000, 190, 1.1);
+}
+.line2 .triangular-tree:nth-child(15) {
+    @include setTree(3300, 190, 1.3);
+}
+.line2 .triangular-tree:nth-child(16) {
+    @include setTree(3400, 200, 1.2);
+}
+.line2 .triangular-tree:nth-child(17) {
+    @include setTree(3900, 180, 1.4);
+}
+.line2 .triangular-tree:nth-child(18) {
+    @include setTree(4100, 180, 1.5);
+}
+.line2 .triangular-tree:nth-child(19) {
+    @include setTree(4500, 190, 1.1);
+}
+.line2 .triangular-tree:nth-child(20) {
+    @include setTree(4800, 180, 1.2);
+}
 
 
 
@@ -652,8 +757,12 @@ $temp-width: 0;
 $bush-color: #6B8E23;
 $bush-top: 69%;
 
-
-
+@mixin setBushLocation($top, $left) {
+    $top: $top + 0px;
+    $left: $left + 0px;
+    top: calc(69% + #{$top});
+    left: $left;
+}
 
 .bush {
     width: 27px;
@@ -661,7 +770,7 @@ $bush-top: 69%;
     position: absolute;
     top: 69%;
     left: 19px;
-    z-index: 100;
+    z-index: 10;
     .base {
         width: 42px;
         height: 11px;
@@ -698,20 +807,69 @@ $bush-top: 69%;
     }
 }
 
-@mixin setBushLocation($top, $left) {
-    $top: $top + 0px;
-    $left: $left + 0px;
-    top: calc(69% + $top);
-    left: $left;
-}
+
+
+$list: [[10, 109], 12, 13];
+
+@each $i in $list {}
 
 .bush:nth-child(1) {
-    @include setBushLocation(10, 39);
+    @include setBushLocation(10, 10);
 }
-.bush:last-child {
-    @include setBushLocation(20, 150);
-}
-
 .bush:nth-child(2) {
-    @include setBushLocation(20, 139);
+    @include setBushLocation(20, 170);
+}
+.bush:nth-child(3) {
+    @include setBushLocation(30, 190);
+}
+.bush:nth-child(4) {
+    @include setBushLocation(20, 400);
+}
+.bush:nth-child(5) {
+    @include setBushLocation(30, 450);
+}
+.bush:nth-child(6) {
+    @include setBushLocation(10, 600);
+}
+.bush:nth-child(7) {
+    @include setBushLocation(20, 650);
+}
+.bush:nth-child(8) {
+    @include setBushLocation(30, 720);
+}
+.bush:nth-child(9) {
+    @include setBushLocation(30, 950);
+}
+.bush:nth-child(10) {
+    @include setBushLocation(20, 1000);
+}
+.bush:nth-child(11) {
+    @include setBushLocation(30, 1100);
+}
+.bush:nth-child(12) {
+    @include setBushLocation(10, 1200);
+}
+.bush:nth-child(13) {
+    @include setBushLocation(20, 1340);
+}
+.bush:nth-child(14) {
+    @include setBushLocation(20, 1500);
+}
+.bush:nth-child(15) {
+    @include setBushLocation(30, 1530);
+}
+.bush:nth-child(16) {
+    @include setBushLocation(20, 1600);
+}
+.bush:nth-child(17) {
+    @include setBushLocation(30, 1650);
+}
+.bush:nth-child(18) {
+    @include setBushLocation(20, 1800);
+}
+.bush:nth-child(19) {
+    @include setBushLocation(30, 1900);
+}
+.bush:nth-child(20) {
+    @include setBushLocation(30, 1940);
 }
