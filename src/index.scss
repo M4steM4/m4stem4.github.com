@@ -763,46 +763,214 @@ $bush-top: 69%;
     top: calc(69% + #{$top});
     left: $left;
 }
+//
+// .bush {
+//     width: 27px;
+//     height: 43px;
+//     position: absolute;
+//     top: 69%;
+//     left: 19px;
+//     z-index: 10;
+//     .base {
+//         width: 42px;
+//         height: 11px;
+//         background: $bush-color;
+//         border-bottom-left-radius: 20px;
+//         border-bottom-right-radius: 20px;
+//         position: absolute;
+//         span {
+//             position: absolute;
+//             border: 10px solid #ea6d23;
+//             border-color: transparent transparent $bush-color transparent;
+//             transform-origin: bottom center;
+//             top: -16px;
+//             left: 0;
+//             &:after {
+//                 content: "";
+//                 position: absolute;
+//                 border: 10px solid #ea6d23;
+//                 border-color: transparent transparent $bush-color transparent;
+//                 transform-origin: bottom center;
+//                 top: -10px;
+//                 left: -1px;
+//             }
+//             &:before {
+//                 content: "";
+//                 position: absolute;
+//                 border: 10px solid #ea6d23;
+//                 border-color: transparent transparent $bush-color transparent;
+//                 transform-origin: bottom center;
+//                 top: -10px;
+//                 left: 10px;
+//             }
+//         }
+//     }
+// }
+//
 
-.bush {
-    width: 27px;
-    height: 43px;
+
+
+
+.wolf {
+    width: 142px;
+    height: 80px;
     position: absolute;
-    top: 69%;
-    left: 19px;
-    z-index: 10;
-    .base {
-        width: 42px;
-        height: 11px;
-        background: $bush-color;
-        border-bottom-left-radius: 20px;
-        border-bottom-right-radius: 20px;
+    left: 100px;
+    top: 65%;
+    transform: rotateY(180deg);
+    z-index: 40;
+    .tail {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #ea6b22;
         position: absolute;
-        span {
+        right: 0;
+        &:after {
+            content: "";
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f7f6e2;
             position: absolute;
-            border: 10px solid #ea6d23;
-            border-color: transparent transparent $bush-color transparent;
+            right: 16px;
+            top: -10px;
+        }
+    }
+    .body {
+        width: 71px;
+        height: 28px;
+        position: absolute;
+        left: 24px;
+        z-index: 100;
+        top: 39px;
+        &:after {
+            content: "";
+            border: 18px solid #ea6d23;
+            border-color: transparent #eb6b23 #eb6b23 transparent;
+            position: absolute;
+            left: -33px;
+            top: -12px;
+            -webkit-transform: rotate(-3deg);
+            -moz-transform: rotate(-3deg);
+            -ms-transform: rotate(-3deg);
+            -o-transform: rotate(-3deg);
+        }
+        .part {
+            position: absolute;
+            width: 0;
+            height: 0;
+            border: 12px solid #ea6d23;
+            border-color: #ea6d23 #ea6d23 transparent transparent;
             transform-origin: bottom center;
-            top: -16px;
-            left: 0;
             &:after {
                 content: "";
+                border: 12px solid #ea6d23;
+                border-color: transparent transparent #f08c56 #f08c56;
                 position: absolute;
-                border: 10px solid #ea6d23;
-                border-color: transparent transparent $bush-color transparent;
-                transform-origin: bottom center;
-                top: -10px;
-                left: -1px;
+                right: -12px;
+                top: -12px;
             }
-            &:before {
-                content: "";
-                position: absolute;
-                border: 10px solid #ea6d23;
-                border-color: transparent transparent $bush-color transparent;
-                transform-origin: bottom center;
-                top: -10px;
-                left: 10px;
-            }
+        }
+        .part1 {
+            right: 0;
+            -webkit-transform: rotate(5deg);
+            -moz-transform: rotate(5deg);
+            -ms-transform: rotate(5deg);
+            -o-transform: rotate(5deg);
+        }
+        .part2 {
+            right: 24px;
+            -webkit-transform: rotate(5deg);
+            -moz-transform: rotate(5deg);
+            -ms-transform: rotate(5deg);
+            -o-transform: rotate(5deg);
+            top: -2px;
+        }
+        .part3 {
+            right: 43px;
+            -webkit-transform: rotate(-6deg);
+            -moz-transform: rotate(-6deg);
+            -ms-transform: rotate(-6deg);
+            -o-transform: rotate(-6deg);
+            top: -2px;
+        }
+    }
+    .legs {
+        position: absolute;
+        width: 60px;
+        height: 20px;
+        bottom: -3px;
+        left: 29px;
+        &:after {
+            content: "";
+            border: 10px solid #ea6d23;
+            border-color: #eb6b23 transparent transparent #eb6b23;
+            position: absolute;
+            -webkit-transform: rotate(-3deg);
+            -moz-transform: rotate(-3deg);
+            -ms-transform: rotate(-3deg);
+            -o-transform: rotate(-3deg);
+            top: -3px;
+        }
+        &:before {
+            content: "";
+            border: 10px solid #ea6d23;
+            border-color: #eb6b23 #eb6b23 transparent transparent;
+            position: absolute;
+            -webkit-transform: rotate(-3deg);
+            -moz-transform: rotate(-3deg);
+            -ms-transform: rotate(-3deg);
+            -o-transform: rotate(-3deg);
+            right: -5px;
+            top: -3px;
+        }
+    }
+}
+
+.tree20 {
+    margin-top: 20%;
+}
+
+.mini-tree {
+    width: 36px;
+    height: 25px;
+    position: absolute;
+    .tree {
+        width: 30px;
+        height: 17px;
+        background: #4d3f3b;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        overflow: hidden;
+        position: absolute;
+        &:after {
+            content: "";
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            border-radius: 50%;
+            background: #4d3f3b;
+            border: 6px solid #79675b;
+            box-sizing: border-box;
+            top: 2px;
+            left: 3px;
+        }
+    }
+    .base {
+        width: 8px;
+        height: 8px;
+        background: #eecdb5;
+        position: absolute;
+        top: 17px;
+        left: 7px;
+        &:after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #c7986c;
+            position: absolute;
+            left: 8px;
         }
     }
 }
@@ -813,63 +981,93 @@ $list: [[10, 109], 12, 13];
 
 @each $i in $list {}
 
-.bush:nth-child(1) {
-    @include setBushLocation(10, 10);
+.tree30 .mini-tree:nth-child(1) {
+    @include setBushLocation(-10, 10);
 }
-.bush:nth-child(2) {
-    @include setBushLocation(20, 170);
+.tree30 .mini-tree:nth-child(2) {
+    @include setBushLocation(10, 170);
 }
-.bush:nth-child(3) {
-    @include setBushLocation(30, 190);
+.tree30 .mini-tree:nth-child(3) {
+    @include setBushLocation(0, 190);
 }
-.bush:nth-child(4) {
-    @include setBushLocation(20, 400);
+.tree30 .mini-tree:nth-child(4) {
+    @include setBushLocation(10, 400);
 }
-.bush:nth-child(5) {
-    @include setBushLocation(30, 450);
+.tree30 .mini-tree:nth-child(5) {
+    @include setBushLocation(0, 450);
 }
-.bush:nth-child(6) {
-    @include setBushLocation(10, 600);
+.tree30 .mini-tree:nth-child(6) {
+    @include setBushLocation(10, 650);
 }
-.bush:nth-child(7) {
-    @include setBushLocation(20, 650);
+.tree30 .mini-tree:nth-child(7) {
+    @include setBushLocation(10, 950);
 }
-.bush:nth-child(8) {
-    @include setBushLocation(30, 720);
+.tree30 .mini-tree:nth-child(8) {
+    @include setBushLocation(0, 1100);
 }
-.bush:nth-child(9) {
-    @include setBushLocation(30, 950);
+.tree30 .mini-tree:nth-child(9) {
+    @include setBushLocation(-10, 1350);
 }
-.bush:nth-child(10) {
-    @include setBushLocation(20, 1000);
+.tree30 .mini-tree:nth-child(10) {
+    @include setBushLocation(-10, 1600);
 }
-.bush:nth-child(11) {
-    @include setBushLocation(30, 1100);
+.tree30 .mini-tree:nth-child(11) {
+    @include setBushLocation(10, 1650);
 }
-.bush:nth-child(12) {
-    @include setBushLocation(10, 1200);
+.tree30 .mini-tree:nth-child(12) {
+    @include setBushLocation(10, 1930);
 }
-.bush:nth-child(13) {
-    @include setBushLocation(20, 1340);
+.tree30 .mini-tree:nth-child(13) {
+    @include setBushLocation(-10, 2000);
 }
-.bush:nth-child(14) {
-    @include setBushLocation(20, 1500);
+.tree30 .mini-tree:nth-child(14) {
+    @include setBushLocation(0, 2300);
 }
-.bush:nth-child(15) {
-    @include setBushLocation(30, 1530);
+.tree30 .mini-tree:nth-child(15) {
+    @include setBushLocation(0, 2500);
 }
-.bush:nth-child(16) {
-    @include setBushLocation(20, 1600);
+.tree30 .mini-tree:nth-child(16) {
+    @include setBushLocation(-10, 2700);
 }
-.bush:nth-child(17) {
-    @include setBushLocation(30, 1650);
+.tree30 .mini-tree:nth-child(17) {
+    @include setBushLocation(-10, 3100);
 }
-.bush:nth-child(18) {
-    @include setBushLocation(20, 1800);
+.tree30 .mini-tree:nth-child(18) {
+    @include setBushLocation(0, 3250);
 }
-.bush:nth-child(19) {
-    @include setBushLocation(30, 1900);
+.tree30 .mini-tree:nth-child(19) {
+    @include setBushLocation(10, 3300);
 }
-.bush:nth-child(20) {
-    @include setBushLocation(30, 1940);
+.tree30 .mini-tree:nth-child(20) {
+    @include setBushLocation(0, 3400);
+}
+.tree30 .mini-tree:nth-child(21) {
+    @include setBushLocation(-10, 3500);
+}
+.tree30 .mini-tree:nth-child(22) {
+    @include setBushLocation(0, 3700);
+}
+.tree30 .mini-tree:nth-child(23) {
+    @include setBushLocation(10, 3750);
+}
+.tree30 .mini-tree:nth-child(24) {
+    @include setBushLocation(10, 3820);
+}
+.tree30 .mini-tree:nth-child(25) {
+    @include setBushLocation(0, 4000);
+}
+.tree30 .mini-tree:nth-child(26) {
+    @include setBushLocation(-10, 4100);
+}
+.tree30 .mini-tree:nth-child(27) {
+    @include setBushLocation(10, 4400);
+}
+.tree30 .mini-tree:nth-child(28) {
+    @include setBushLocation(0, 4500);
+}
+.tree30 .mini-tree:nth-child(29) {
+    @include setBushLocation(10, 4800);
+}
+.tree30 .mini-tree:nth-child(30) {
+    @include setBushLocation(10, 4850);
 }
