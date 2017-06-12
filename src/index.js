@@ -15,6 +15,7 @@ $(window).on('mousewheel', function(e){
     }
 });
 
+
 function addMiniTree(num) {
     var miniTree = "";
     for(var i = 0; i < 30; i++) {
@@ -35,7 +36,7 @@ var $line1 = $('.line1');
 var $line2 = $('.line2');
 
 
-addTree($line1, 30);
+addTree($line1, 32);
 addTree($line2, 20);
-addMiniTree(30);
+addMiniTree(32);
 addMiniTree(20);
