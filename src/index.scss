@@ -1,56 +1,94 @@
+/** Sass value **/
+
+$sky: #E0FFFF;
+$grass: #ccf370;
+$road: #545965;
+$spring-leaf1: #5bab30;
+$spring-leaf2: #378918;
+$spring-leaf3: #5eab31;
+$spring-leaf4: #358915;
+$spring-leaf5: #a3cd3a;
+$spring-leaf6: #abd048;
+$spring-leaf7: #a4cf37;
+$spring-leaf8: #58a72f;
+
+/** Tree location **/
+
+$line1-minitree: [[10, 50], [0, 190], [10, 400], [0, 650], [10, 950],
+                 [-10, 1350], [-10, 1600], [10, 1650], [10, 1930], [-10, 2000],
+                 [0, 2300], [-10, 2700], [-10, 3100], [10, 3300], [-10, 3500],
+                 [10, 3820], [0, 3950], [10, 4400], [0, 4500], [10, 4800],
+                 [10, 4850]];
+$line2-minitree: [[0, 200], [10, 430], [10, 600], [-10, 700], [-10, 1100],
+                 [10, 1350], [0, 1500], [-10, 1700], [10, 1910], [10, 2200],
+                 [-10, 2400], [0, 2450], [0, 2900], [10, 3200], [-10, 3600],
+                 [10, 3650], [0, 3690], [0, 4200], [10, 4400], [-10, 4700],
+                 [0, 4940]];
+$line1-tree: [[50, 0, 1.4], [240, 20, 1.3], [300, 30, 1.1], [500, 10, 1.5],[650, 10, 1.3],
+             [800, 30, 1.2], [860, 20, 1.3], [1000, 20, 1.2], [1100, 10, 1.4], [1240, 30, 1.2],
+             [1400, 40, 1.0], [1700, 30, 1.1], [1760, 20, 1.3], [1900, 10, 1.4], [2040, 30, 1.2],
+             [2430, 10, 1.4], [2530, 20, 1.4], [2740, 30, 1.1], [2930, 10, 1.5], [3010, 20, 1.3],
+             [3120, 20, 1.1], [3310, 30, 1.2], [3590, 30, 1.1], [3700, 10, 1.4], [3830, 10, 1.3],
+             [4000, 20, 1.2], [4100, 30, 1.2], [4250, 10, 1.4], [4500, 20, 1.1], [4620, 10, 1.5],
+             [4900, 20, 1.3], [2200, 10, 1.5]];
+$line2-tree: [[50, 160, 1.3], [100, 180, 1.2], [300, 190, 1.1], [500, 180, 1.2], [800, 180, 1.2],
+             [1000, 160, 1.4], [1300, 170, 1.2], [1400, 190, 1.1], [1800, 150, 1.5], [1850, 160, 1.4],
+             [1940, 170, 1.3], [2100, 180, 1.3], [2300, 170, 1.2], [2600, 180, 1.2], [2700, 170, 1.3],
+             [3000, 190, 1.1], [3300, 170, 1.3], [3400, 180, 1.2], [3900, 170, 1.4], [4100, 160, 1.5],
+             [4500, 190, 1.1], [4800, 180, 1.2]];
+$line1-fox: [[10, 440], [0, 2800], [10, 4650]];
+$line2-fox: [[10, 1100], [10, 3100], [10, 3700]];
+//Leaf function
+ @mixin leaf() {
+     position: absolute;
+     width: 0px;
+     height: 0px;
+     border-width: 15px 12px;
+     border-style: solid;
+ }
+//Set leaf color
+ @mixin leafColor($border-color) {
+     content: "";
+     bottom: 0;
+     border-color: transparent transparent #{$border-color} transparent;
+ }
+
+/** Main **/
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    max-height: 700px;
 }
-
-$value: #999;
-$sky: #E0FFFF;
-$grass: #ccf370;
-$road: #545965;
-$leaf-line1: #869832;
-$leaf-line2: #798c2a;
-
 
 #main {
     position: absolute;
     width: 20000px;
     height: 100%;
 }
-
+//Section
 #spring {
     width: 25%;
     height: 100%;
 }
-
+//background
 #background {
     display: block;
     height: 70%;
     width: 100%;
     background-color: $sky;
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }
-
-#background:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
+//Road & Line
 #road {
     display: block;
     height: 30%;
     width: 100%;
-    #welcome {
-        color: lighten(#7c8399, 40%);
-        font-size: 400%;
-        position: absolute;
-        margin-top: 20px;
-        margin-left: 1%;
-    }
 }
-
-
 
 .grass {
     height: 20%;
@@ -65,14 +103,12 @@ $leaf-line2: #798c2a;
     width: 100%;
 }
 
-
-@mixin leaf() {
-    position: absolute;
-    width: 0px;
-    height: 0px;
-    border-width: 15px 12px;
-    border-style: solid;
+.line2 > .triangular-tree {
+    opacity: 0.8;
+    z-index: 200;
 }
+
+/** Tree **/
 
 .triangular-tree {
     width: 86px;
@@ -82,211 +118,220 @@ $leaf-line2: #798c2a;
     left: 10px;
     transform: scale(0.9, 1.3);
     z-index: 10;
+    .tree {
+        .part {
+            position: absolute;
+            left: 30px;
+        }
+        .part1 {
+            top: -15px;
+            z-index: 300;
+            .top {
+                border-color: transparent transparent #a4ce3d transparent;
+            }
+            .bottom {
+                border-color: #348817 transparent transparent transparent;
+                top: 30px;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    right: -24px;
+                }
+                &:before {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    left: -24px;
+                }
+            }
+        }
+        .part2 {
+            top: 29px;
+            z-index: 200;
+            .top {
+                border-color: #3c8b19 transparent transparent transparent;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    right: -24px;
+                }
+                &:before {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    left: -24px;
+                }
+            }
+            .bottom {
+                border-color: #a9d045 transparent transparent  transparent;
+                bottom: -45px;
+                right: -36px;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    right: -24px;
+                }
+                &:before {
+                    @include leaf();
+                    @include leafColor($spring-leaf2);
+                    left: -24px;
+                }
+            }
+            .bottom2 {
+                border-color: #a9d045 transparent transparent  transparent;
+                bottom: -45px;
+                right: -12px;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf3);
+                    right: 0;
+                }
+            }
+        }
+        .part3 {
+            top: 44px;
+            z-index: 100;
+            .top {
+                border-color: #3c8b19 transparent transparent transparent;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    right: -24px;
+                }
+                &:before {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    left: -24px;
+                }
+            }
+            .bottom {
+                border-color: $spring-leaf4 transparent transparent  transparent;
+                bottom: -45px;
+                right: -36px;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf4);
+                    right: -24px;
+                }
+                &:before {
+                    @include leaf();
+                    @include leafColor($spring-leaf6);
+                    left: -24px;
+                }
+            }
+            .bottom2 {
+                border-color: #5ba831 transparent transparent  transparent;
+                bottom: -45px;
+                right: -12px;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf5);
+                    right: 0;
+                }
+            }
+            .bottom3 {
+                border-color: #5cac31 transparent transparent  transparent;
+                bottom: -60px;
+                right: -48px;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf1);
+                    right: -24px;
+                }
+                &:before {
+                    @include leaf();
+                    @include leafColor($spring-leaf2);
+                    left: -24px;
+                }
+            }
+            .bottom4 {
+                border-color: #5aab32 transparent transparent  transparent;
+                bottom: -60px;
+                right: -24px;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf7);
+                    right: 0;
+                }
+            }
+            .bottom5 {
+                border-color: $spring-leaf8 transparent transparent  transparent;
+                bottom: -60px;
+                right: 0;
+                &:after {
+                    @include leaf();
+                    @include leafColor($spring-leaf8);
+                    right: 0;
+                }
+            }
+        }
+        .triangle {
+            @include leaf();
+        }
+    }
+    .base {
+        width: 11px;
+        height: 13px;
+        background: #c99c71;
+        position: absolute;
+        bottom: 0;
+        left: 32px;
+        &:after {
+            content: "";
+            position: absolute;
+            left: 11px;
+            width: 11px;
+            height: 13px;
+            background: #736457;
+        }
+    }
 }
 
-$spring-leaf1: #5bab30;
-$spring-leaf2: #378918;
-$spring-leaf3: #5eab31;
-$spring-leaf4: #358915;
-$spring-leaf5: #a3cd3a;
-$spring-leaf6: #abd048;
-$spring-leaf7: #a4cf37;
-$spring-leaf8: #58a72f;
+/** Mini tree **/
 
-
-@mixin leafColor($border-color) {
-    content: "";
-    bottom: 0;
-    border-color: transparent transparent #{$border-color} transparent;
-};
-
-.triangular-tree .tree .part {
+.mini-tree {
+    width: 36px;
+    height: 25px;
     position: absolute;
-    left: 30px;
-}
-.triangular-tree .tree .triangle {
-    @include leaf();
-}
-.triangular-tree .tree .part1 {
-    top: -15px;
-    z-index: 300;
-}
-.triangular-tree .tree .part1 .top {
-    border-color: transparent transparent #a4ce3d transparent;
-}
-.triangular-tree .tree .part1 .bottom {
-    border-color: #348817 transparent transparent transparent;
-    top: 30px;
-}
-
-
-
-
-.triangular-tree .tree .part1 .bottom:after {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    right: -24px;
-}
-.triangular-tree .tree .part1 .bottom:before {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    left: -24px;
-}
-.triangular-tree .tree .part2 {
-    top: 29px;
-    z-index: 200;
-}
-.triangular-tree .tree .part2 .top {
-    border-color: #3c8b19 transparent transparent transparent;
-}
-.triangular-tree .tree .part2 .top:after {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    right: -24px;
-}
-.triangular-tree .tree .part2 .top:before {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    left: -24px;
-}
-.triangular-tree .tree .part2 .bottom {
-    border-color: #a9d045 transparent transparent  transparent;
-    bottom: -45px;
-    right: -36px;
-}
-.triangular-tree .tree .part2 .bottom:after {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    right: -24px;
-}
-.triangular-tree .tree .part2 .bottom:before {
-    @include leaf();
-    @include leafColor($spring-leaf2);
-    left: -24px;
-}
-.triangular-tree .tree .part2 .bottom2 {
-    border-color: #a9d045 transparent transparent  transparent;
-    bottom: -45px;
-    right: -12px;
-}
-.triangular-tree .tree .part2 .bottom2:after {
-    @include leaf();
-    @include leafColor($spring-leaf3);
-    right: 0;
-}
-.triangular-tree .tree .part3 {
-    top: 44px;
-    z-index: 100;
-}
-.triangular-tree .tree .part3 .top {
-    border-color: #3c8b19 transparent transparent transparent;
-}
-.triangular-tree .tree .part3 .top:after {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    right: -24px;
-}
-.triangular-tree .tree .part3 .top:before {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    left: -24px;
-}
-.triangular-tree .tree .part3 .bottom {
-    border-color: $spring-leaf4 transparent transparent  transparent;
-    bottom: -45px;
-    right: -36px;
-}
-.triangular-tree .tree .part3 .bottom:after {
-    @include leaf();
-    @include leafColor($spring-leaf4);
-    right: -24px;
-}
-.triangular-tree .tree .part3 .bottom:before {
-    @include leaf();
-    @include leafColor($spring-leaf6);
-    left: -24px;
-}
-.triangular-tree .tree .part3 .bottom2 {
-    border-color: #5ba831 transparent transparent  transparent;
-    bottom: -45px;
-    right: -12px;
-}
-.triangular-tree .tree .part3 .bottom2:after {
-    @include leaf();
-    @include leafColor($spring-leaf5);
-    right: 0;
-}
-.triangular-tree .tree .part3 .bottom3 {
-    border-color: #5cac31 transparent transparent  transparent;
-    bottom: -60px;
-    right: -48px;
-}
-.triangular-tree .tree .part3 .bottom3:after {
-    @include leaf();
-    @include leafColor($spring-leaf1);
-    right: -24px;
-}
-.triangular-tree .tree .part3 .bottom3:before {
-    @include leaf();
-    @include leafColor($spring-leaf2);
-    left: -24px;
-}
-.triangular-tree .tree .part3 .bottom4 {
-    border-color: #5aab32 transparent transparent  transparent;
-    bottom: -60px;
-    right: -24px;
-}
-.triangular-tree .tree .part3 .bottom4:after {
-    @include leaf();
-    @include leafColor($spring-leaf7);
-    right: 0;
-}
-.triangular-tree .tree .part3 .bottom5 {
-    border-color: $spring-leaf8 transparent transparent  transparent;
-    bottom: -60px;
-    right: 0;
-}
-.triangular-tree .tree .part3 .bottom5:after {
-    @include leaf();
-    @include leafColor($spring-leaf8);
-    right: 0;
-}
-.triangular-tree .base {
-    width: 11px;
-    height: 13px;
-    background: #c99c71;
-    position: absolute;
-    bottom: 0;
-    left: 32px;
-}
-.triangular-tree .base:after {
-    content: "";
-    position: absolute;
-    left: 11px;
-    width: 11px;
-    height: 13px;
-    background: #736457;
+    z-index: 20;
+    .tree {
+        width: 30px;
+        height: 17px;
+        background: #4d3f3b;
+        border-top-right-radius: 15px;
+        border-top-left-radius: 15px;
+        overflow: hidden;
+        position: absolute;
+        &:after {
+            content: "";
+            width: 24px;
+            height: 24px;
+            position: absolute;
+            border-radius: 50%;
+            background: #4d3f3b;
+            border: 6px solid #79675b;
+            box-sizing: border-box;
+            top: 2px;
+            left: 3px;
+        }
+    }
+    .base {
+        width: 8px;
+        height: 8px;
+        background: #eecdb5;
+        position: absolute;
+        top: 17px;
+        left: 7px;
+        &:after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            background: #c7986c;
+            position: absolute;
+            left: 8px;
+        }
+    }
 }
 
-.line2 > .triangular-tree {
-    opacity: 0.8;
-    z-index: 200;
-}
-
-@mixin setTree($left, $top, $size){
-    left: $left + 0px;
-    $top: $top/7 + 0%;
-    top: calc(54% + #{$top});
-    transform: scaleY($size);
-}
-
-$line1-tree: [[50, 0, 1.4], [240, 20, 1.3], [300, 30, 1.1], [500, 10, 1.5],[650, 10, 1.3],
-             [800, 30, 1.2], [860, 20, 1.3], [1000, 20, 1.2], [1100, 10, 1.4], [1240, 30, 1.2],
-             [1400, 40, 1.0], [1700, 30, 1.1], [1760, 20, 1.3], [1900, 10, 1.4], [2040, 30, 1.2], [2200, 10, 1.5],
-             [2430, 10, 1.4], [2530, 20, 1.4], [2740, 30, 1.1], [2930, 10, 1.5], [3010, 20, 1.3],
-             [3120, 20, 1.1], [3310, 30, 1.2], [3590, 30, 1.1], [3700, 10, 1.4], [3830, 10, 1.3],
-             [4000, 20, 1.2], [4100, 30, 1.2], [4250, 10, 1.4], [4500, 20, 1.1], [4620, 10, 1.5],
-             [4900, 20, 1.3]];
+/** Location auto setting **/
 
 @for $i from 1 through length($line1-tree) {
     .line1 .triangular-tree:nth-child(#{$i}) {
@@ -301,13 +346,6 @@ $line1-tree: [[50, 0, 1.4], [240, 20, 1.3], [300, 30, 1.1], [500, 10, 1.5],[650,
     }
 }
 
-$line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2], [1000, 180, 1.4],
-             [1300, 170, 1.2], [1400, 190, 1.1], [1800, 180, 1.5], [1850, 180, 1.4], [1940, 170, 1.3],
-             [2100, 190, 1.3], [2300, 200, 1.2], [2600, 180, 1.2], [3000, 190, 1.1], [3300, 190, 1.3],
-             [3400, 200, 1.2], [3900, 180, 1.4], [4100, 180, 1.5], [4500, 190, 1.1], [4800, 180, 1.2]];
-
-
-
 @for $i from 1 through length($line2-tree) {
     .line2 .triangular-tree:nth-child(#{$i}) {
         $temp: nth($line2-tree, $i);
@@ -321,6 +359,46 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     }
 }
 
+@for $i from 1 through length($line1-minitree) {
+    .line1 > .mushroom:last-child .mini-tree:nth-child(#{$i}) {
+        $temp: nth($line1-minitree, $i);
+        $top: nth($temp, 1) + 0px;
+        $left: nth($temp, 2) + 0px;
+        top: calc(69% + #{$top});
+        left: $left;
+    }
+}
+
+@for $i from 1 through length($line2-minitree) {
+    .line2 > .mushroom:last-child .mini-tree:nth-child(#{$i}) {
+        $temp: nth($line2-minitree, $i);
+        $top: nth($temp, 1) + 0px;
+        $left: nth($temp, 2) + 0px;
+        top: calc(94% + #{$top});
+        left: $left;
+    }
+}
+
+@for $i from 1 through length($line1-fox) {
+    .line1 > .wolf > .fox:nth-child(#{$i}) {
+        $temp: nth($line1-fox, $i);
+        $top: nth($temp, 1) + 0px;
+        $left: nth($temp, 2) + 0px;
+        top: calc(61% + #{$top});
+        left: $left;
+    }
+}
+
+@for $i from 1 through length($line2-fox) {
+    .line2 > .wolf > .fox:nth-child(#{$i}) {
+        $temp: nth($line2-fox, $i);
+        $top: nth($temp, 1) + 0px;
+        $left: nth($temp, 2) + 0px;
+        top: calc(85% + #{$top});
+        left: $left;
+    }
+}
+//Train
 
 #train {
     left: 50%;
@@ -328,119 +406,111 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     position: fixed;
     z-index: 100;
     transform: rotateY(0);
+    .toy-train {
+        position: relative;
+        left: 30%;
+        top: 30%;
+        margin-left: -100px;
+        margin-top: -15px;
+        width: 105px;
+        transform: scale(1.4);
+        .engine {
+            float: right;
+            position: relative;
+            .window {
+                height: 30px;
+                width: 30px;
+                background-color: #194488;
+                position: relative;
+                border: 3px solid #000;
+                &:before, &:after {
+                    content: "";
+                    position: absolute;
+                    left: 50%;
+                    border: 3px solid #000;
+                }
+                &:before {
+                    height: 7px;
+                    background-color: #F82510;
+                    width: 40px;
+                    margin-top: -13px;
+                    margin-left: -23px;
+                    border-radius: 10px;
+                }
+                &:after {
+                    margin-left: -8px;
+                    margin-top: 4px;
+                    border-radius: 50%;
+                    height: 11px;
+                    width: 11px;
+                    background-color: #fff;
+                }
+                .engine-main {
+                    height: 15px;
+                    width: 35px;
+                    border: 3px solid #000;
+                    background-color: #3D9A01;
+                    position: absolute;
+                    border-radius: 0 8px 8px 0;
+                    right: -41px;
+                    bottom: -3px;
+                    &:after {
+                        content: "";
+                        height: 12px;
+                        width: 8px;
+                        position: absolute;
+                        display: block;
+                        right: 5px;
+                        top: -18px;
+                        border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
+                        transform: rotate(180deg);
+                        z-index: -1;
+                        background-color: #194488;
+                        border: 3px solid #000;
+                    }
+                }
+            }
+            .engine-body {
+                height: 17px;
+                width: 75px;
+                position: absolute;
+                left: -2px;
+                top: 30px;
+                background-color: #F69F00;
+                border: 3px solid #000;
+                border-radius: 5px;
+                &:before {
+                    content: "";
+                    position: absolute;
+                    height: 5px;
+                    width: 5px;
+                    left: -11px;
+                    bottom: 2px;
+                    z-index: -1;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    border: 3px solid #000;
+                }
+            }
+        }
+    }
 }
-
-.toy-train {
-    position: relative;
-    left: 30%;
-    top: 30%;
-    margin-left: -100px;
-    margin-top: -15px;
-    width: 105px;
-    transform: scale(1.4);
-}
-
-.engine {
-    float: right;
-    position: relative;
-}
-
-.window {
-    height: 30px;
-    width: 30px;
-    background-color: #194488; //mid color
-    position: relative;
-
-    border: 3px solid #000;
-}
-.window:before, .window:after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    border: 3px solid #000;
-}
-.window:before {
-    height: 7px;
-    background-color: #F82510;
-    width: 40px;
-    margin-top: -13px;
-    margin-left: -23px;
-    border-radius: 10px;
-}
-.window:after {
-    margin-left: -8px;
-    margin-top: 4px;
-    border-radius: 50%;
-    height: 11px;
-    width: 11px;
-    background-color: #fff;
-}
-
-.engine-main {
-    height: 15px;
-    width: 35px;
-    border: 3px solid #000;
-    background-color: #3D9A01;
-    position: absolute;
-    border-radius: 0 8px 8px 0;
-    right: -41px;
-    bottom: -3px;
-}
-.engine-main:before {
-    content: "";
-    height: 10px;
-    width: 8px;
-    background-color: #000;
-    position: absolute;
-    top: -11px;
-    left: 4px;
-    transform: rotate(180deg);
-    border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
-}
-.engine-main:after {
-    content: "";
-    height: 12px;
-    width: 8px;
-    position: absolute;
-    display: block;
-    right: 5px;
-    top: -18px;
-    border-radius: 50% 50% 50% 50% / 90% 90% 40% 40%;
-    transform: rotate(180deg);
-    z-index: -1;
-    background-color: #194488;
-    border: 3px solid #000;
-}
-
-.engine-body {
-    height: 17px;
-    width: 75px;
-    position: absolute;
-    left: -2px;
-    top: 30px;
-    background-color: #F69F00;
-    border: 3px solid #000;
-    border-radius: 5px;
-}
-.engine-body .big-wheel {
-    top: 3px;
-    left: 4px;
-}
-.engine-body .normal-wheel {
-    left: 45px;
-    top: 5px;
-}
-.engine-body:before {
-    content: "";
-    position: absolute;
-    height: 5px;
-    width: 5px;
-    left: -11px;
-    bottom: 2px;
-    z-index: -1;
-    background-color: #fff;
-    border-radius: 50%;
-    border: 3px solid #000;
+// Wheel
+.wheels {
+    .big-wheel {
+        width: 22px;
+        height: 22px;
+        top: 3px;
+        left: 4px;
+        animation-delay: -0.3s;
+    }
+    .normal-wheel {
+        height: 20px;
+        width: 20px;
+        left: 45px;
+        top: 5px;
+        animation-delay: -0.6s;
+    }
 }
 
 .wheels > div {
@@ -449,40 +519,28 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     border-radius: 50%;
     border: 3px solid #000;
     animation: wheel-rotate 1s linear infinite;
+    &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-bottom: 1px solid #000;
+        top: 50%;
+        margin-top: -1px;
+    }
+    &:after {
+        content: "";
+        height: 6px;
+        width: 6px;
+        position: absolute;
+        background-color: #000;
+        border-radius: 50%;
+        left: 50%;
+        top: 50%;
+        margin-left: -3px;
+        margin-top: -3px;
+    }
 }
-.wheels > div:before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    border-bottom: 1px solid #000;
-    top: 50%;
-    margin-top: -1px;
-}
-.wheels > div:after {
-    content: "";
-    height: 6px;
-    width: 6px;
-    position: absolute;
-    background-color: #000;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    margin-left: -3px;
-    margin-top: -3px;
-}
-
-.wheels .big-wheel {
-    width: 22px;
-    height: 22px;
-    animation-delay: -0.3s;
-}
-
-.wheels .normal-wheel {
-    height: 20px;
-    width: 20px;
-    animation-delay: -0.6s;
-}
-
+// Locomotive
 .locomotive {
     height: 35px;
     width: 60px;
@@ -492,34 +550,36 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     position: relative;
     float: left;
     margin-top: 13px;
+    .trash {
+        height: 35px;
+        width: 50px;
+        position: absolute;
+        top: -18px;
+        border: 3px solid #000;
+        background-color: #3D9A01;
+        border-radius: 20%;
+        left: 2px;
+        z-index: -1;
+    }
+    .wheels > div {
+        top: 22px;
+        animation-delay: -0.6s;
+        &:first-child {
+            animation-delay: -0.6s;
+        }
+    }
+    .wheels {
+        .normal-wheel {
+            &:first-of-type {
+                left: 2px;
+            }
+            &:last-of-type {
+                left: 32px;
+            }
+        }
+    }
 }
-
-.locomotive .wheels > div {
-    top: 22px;
-    animation-delay: -0.6s;
-}
-.locomotive .wheels > div:first-child {
-    animation-delay: -0.6s;
-}
-.locomotive .normal-wheel:first-of-type {
-    left: 2px;
-}
-.locomotive .normal-wheel:last-of-type {
-    right: 2px;
-}
-//바꿀거
-.locomotive .trash {
-    height: 35px;
-    width: 50px;
-    position: absolute;
-    top: -18px;
-    border: 3px solid #000;
-    background-color: #3D9A01;
-    border-radius: 20%;
-    left: 2px;
-    z-index: -1;
-}
-
+//smokes
 .smokes:before, .smokes:after,
 .smokes span:before {
     display: block;
@@ -545,23 +605,8 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     animation-delay: -0.3s;
 }
 
-@keyframes smoke {
-    100% {
-        top: -60px;
-        opacity: 0.5;
-    }
-}
-@keyframes wheel-rotate {
-    100% {
-        transform: rotate(360deg);
-    }
-}
+/** Flag **/
 
-
-
-
-
-/** BASIC **/
 .center {
     height: 70%;
     width: 4%;
@@ -572,12 +617,6 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     z-index: 1;
 }
 
-.flag-text {
-    font-family: 'Orbitron', sans-serif;
-    letter-spacing: 3px;
-    font-size: 250%;
-}
-/** FLAG **/
 .flag-container {
     height: 230px;
     position: relative;
@@ -619,6 +658,11 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     top: 0;
     width: 100%;
     z-index: 10;
+    .flag-text {
+        font-family: 'Orbitron', sans-serif;
+        letter-spacing: 3px;
+        font-size: 250%;
+    }
 }
 
 .flag.back {
@@ -628,7 +672,6 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     top: 45px;
     left: calc(100% - 74px);
     z-index: 5;
-
     .shadow {
         border-color: rgb(22, 22, 22) transparent transparent transparent;
         border-style: solid;
@@ -642,7 +685,9 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     }
 }
 
-.wolf {
+/** Fox **/
+
+.fox {
     width: 142px;
     height: 80px;
     position: absolute;
@@ -651,21 +696,22 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     transform: rotateY(180deg);
     z-index: 40;
     .tail {
-        width: 50px;
-        height: 50px;
-        border-radius: 50%;
+        width: 18px;
+        height: 30px;
         background: #ea6b22;
         position: absolute;
+        top: -5px;
         right: 0;
         &:after {
             content: "";
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #f7f6e2;
+            width: 20px;
+            height: 20px;
+            background: transparent;
             position: absolute;
-            right: 16px;
-            top: -10px;
+            border-bottom: 15px solid #ea6b22;
+            border-right:15px solid #ea6b22;
+            right: 15px;
+            top: 20px;
         }
     }
     .body {
@@ -759,71 +805,14 @@ $line2-tree: [[50, 180, 1.3], [100, 200, 1.2], [300, 200, 1.1], [800, 190, 1.2],
     }
 }
 
-
-
-.mini-tree {
-    width: 36px;
-    height: 25px;
-    position: absolute;
-    z-index: 20;
-    .tree {
-        width: 30px;
-        height: 17px;
-        background: #4d3f3b;
-        border-top-right-radius: 15px;
-        border-top-left-radius: 15px;
-        overflow: hidden;
-        position: absolute;
-        &:after {
-            content: "";
-            width: 24px;
-            height: 24px;
-            position: absolute;
-            border-radius: 50%;
-            background: #4d3f3b;
-            border: 6px solid #79675b;
-            box-sizing: border-box;
-            top: 2px;
-            left: 3px;
-        }
-    }
-    .base {
-        width: 8px;
-        height: 8px;
-        background: #eecdb5;
-        position: absolute;
-        top: 17px;
-        left: 7px;
-        &:after {
-            content: "";
-            width: 8px;
-            height: 8px;
-            background: #c7986c;
-            position: absolute;
-            left: 8px;
-        }
+@keyframes smoke {
+    100% {
+        top: -60px;
+        opacity: 0.5;
     }
 }
-
-$line1-minitree: [[-10, 10], [10, 170], [0, 190], [10, 400], [0, 450], [0, 650], [10, 950], [10, 1100], [-10, 1350], [-10, 1600], [10, 1650], [10, 1930], [-10, 2000], [0, 2300], [0, 2500], [-10, 2700], [-10, 3100], [0, 3250], [10, 3300], [0, 3400], [-10, 3500], [10, 3750], [10, 3820], [0, 3950], [10, 4400], [0, 4500], [10, 4800], [10, 4850]];
-$line2-minitree: [[0, 200], [10, 400], [10, 600], [-10, 700], [0, 900], [-10, 1100], [10, 1350], [0, 1500], [-10, 1700], [10, 1910], [10, 2200], [-10, 2400], [0, 2450], [0, 2900], [10, 3200], [-10, 3600], [10, 3650], [0, 3690], [0, 4200], [10, 4400], [-10, 4700], [0, 4940]];
-
-@for $i from 1 through length($line1-minitree) {
-    .tree32 .mini-tree:nth-child(#{$i}) {
-        $temp: nth($line1-minitree, $i);
-        $top: nth($temp, 1) + 0px;
-        $left: nth($temp, 2) + 0px;
-        top: calc(69% + #{$top});
-        left: $left;
-    }
-}
-
-@for $i from 1 through length($line2-minitree) {
-    .tree20 .mini-tree:nth-child(#{$i}) {
-        $temp: nth($line2-minitree, $i);
-        $top: nth($temp, 1) + 0px;
-        $left: nth($temp, 2) + 0px;
-        top: calc(94% + #{$top});
-        left: $left;
+@keyframes wheel-rotate {
+    100% {
+        transform: rotate(360deg);
     }
 }
