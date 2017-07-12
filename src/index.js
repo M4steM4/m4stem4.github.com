@@ -1,5 +1,6 @@
-if(module.hot){
-  module.hot.accept()
+if (module.hot) {
+    console.log("test ");
+  module.hot.accept();
 }
 
 import './index.scss';
@@ -23,9 +24,9 @@ function addTree(location, num) {
     location.html(tree);
 }
 
-function addFox(location, num) {
+function addFox(location, count, num) {
     var fox = `<div class="wolf">`;
-    for(var i = 0; i < 3; i++) {
+    for(var i = 0; i < count; i++) {
         fox += `<div class="fox"> <div class="body"> <div class="part part1"></div> <div class="part part2"></div> <div class="part part3"></div> </div> <div class="tail"></div> <div class="legs"></div> </div>`;
     }
     fox += `</div>`;
@@ -33,9 +34,9 @@ function addFox(location, num) {
     $('.line' + num).html(temp + fox);
 }
 
-function addMiniTree(location, num) {
+function addMiniTree(location, count, num) {
     var miniTree = `<div class="mushroom">`;
-    for(var i = 0; i < 21; i++) {
+    for(var i = 0; i < count; i++) {
         miniTree += `<div class="mini-tree"> <div class="tree"></div> <div class="base"></div> </div>`;
     }
     miniTree += `</div>`
@@ -43,7 +44,13 @@ function addMiniTree(location, num) {
     $('.line' + num).html(temp + miniTree);
 }
 
-
+// function test() {
+//     var test = `<div class="kakao"> <div class="logo"></div> </div>`;
+//     var contentList = $('.content');
+//     $(contentList[0]).html(test);
+// }
+//
+// test();
 
 var minitreeLine;
 var wolfLine;
@@ -51,9 +58,9 @@ var $treeLine1 = $('.line1');
 var $treeLine2 = $('.line2');
 
 
-addTree($treeLine1, 32);
-addTree($treeLine2, 22);
-addFox(wolfLine, 1);
-addFox(wolfLine, 2);
-addMiniTree(minitreeLine, 1);
-addMiniTree(minitreeLine, 2);
+addTree($treeLine1, 70);
+addTree($treeLine2, 55);
+addFox(wolfLine, 5, 1);
+addFox(wolfLine, 5, 2);
+addMiniTree(minitreeLine, 45, 1);
+addMiniTree(minitreeLine, 40, 2);
