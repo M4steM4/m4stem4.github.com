@@ -17,23 +17,14 @@ $spring-leaf8: #58a72f;
 $line1-minitree: (10, 50),(0, 140),(10, 210),(0, 250),(10, 300),
                 (-10, 400),(-10, 250),(10, 50),(10, 300),(-10, 400),
                 (0, 200),(0, 130),(10, 350),(10, 320),(-10, 70),
-                (10, 400),(0, 100),(10, 200),(0, 100),(10, 140),
+                (10, 400),(0, 120),
                 (10, 150),(0, 140),(10, 210),(0, 300),(10, 300),
                 (-10, 200),(-10, 250),(10, 50),(10, 200),(-10, 400),
                 (0, 200),(0, 130),(10, 350),(10, 320),(10, 150),
                 (10, 450),(0, 100),(10, 200),(0, 300),(10, 140),
-                (-10, 200),(-10, 250),(10, 50),(10, 300),(10, 230);
+                (-10, 200),(-10, 250),(10, 50),(10, 350),(10, 270);
 
-$line2-minitree:(0, 200),(10, 230),(10, 170),(-10, 100),(-10, 400),
-                (10, 250),(0, 150),(-10, 200),(10, 270),(10, 330),
-                (-10, 200),(0, 50),(0, 450),(10, 300),(-10, 400),
-                (10, 50),(0, 40),(0, 540),(10, 200),(-10, 400),
-                (0, 240),(0, 200),(10, 330),(10, 170),(-10, 100),
-                (10, 240),(0, 180),(-10, 200),(10, 210),(10, 290),
-                (-10, 330),(0, 50),(0, 450),(10, 300),(-10, 400),
-                (10, 50),(0, 40),(0, 510),(10, 200),(-10, 500);
-
-$line1-tree:(50, 0, 1.4), (190, 20, 1.3), (60, 30, 1.1), (200, 10, 1.5), (150, 10, 1.3),
+$line1-tree: (50, 0, 1.4), (190, 20, 1.3), (60, 30, 1.1), (200, 10, 1.5), (150, 10, 1.3),
             (150, 30, 1.2), (60, 20, 1.3), (140, 20, 1.2), (100, 10, 1.4), (140, 30, 1.2),
             (200, 40, 1.0), (210, 30, 1.1), (60, 20, 1.3), (140, 10, 1.4), (180, 30, 1.2),
             (160, 10, 1.4), (190, 20, 1.4), (210, 30, 1.1), (190, 10, 1.5), (100, 20, 1.3),
@@ -48,20 +39,7 @@ $line1-tree:(50, 0, 1.4), (190, 20, 1.3), (60, 30, 1.1), (200, 10, 1.5), (150, 1
             (160, 20, 1.3), (140, 10, 1.5), (70, 0, 1.4), (170, 20, 1.3), (60, 30, 1.1),
             (150, 30, 1.2), (60, 20, 1.3), (140, 20, 1.2), (100, 10, 1.4), (140, 30, 1.2);
 
-$line2-tree:(50, 160, 1.3), (50, 180, 1.2), (200, 190, 1.1), (200, 180, 1.2), (300, 180, 1.2),
-            (200, 160, 1.4), (240, 170, 1.2), (150, 190, 1.1), (200, 150, 1.5), (50, 160, 1.4),
-            (90, 170, 1.3), (160, 180, 1.3), (200, 170, 1.2), (150, 180, 1.2), (100, 170, 1.3),
-            (300, 190, 1.1), (200, 170, 1.3), (200, 180, 1.2), (300, 170, 1.4), (200, 160, 1.5),
-            (400, 190, 1.1), (100, 180, 1.2), (200, 190, 1.1), (200, 180, 1.2), (300, 180, 1.2),
-            (50, 160, 1.3), (50, 180, 1.2), (200, 190, 1.1), (200, 180, 1.2), (300, 180, 1.2),
-            (200, 160, 1.4), (240, 170, 1.2), (150, 190, 1.1), (200, 150, 1.5), (50, 160, 1.4),
-            (90, 170, 1.3), (160, 180, 1.3), (90, 170, 1.2), (150, 180, 1.2), (100, 170, 1.3),
-            (200, 190, 1.1), (100, 170, 1.3), (70, 180, 1.2), (200, 170, 1.4), (110, 160, 1.5),
-            (300, 190, 1.1), (100, 180, 1.2), (50, 190, 1.1), (200, 180, 1.2), (130, 180, 1.2),
-            (400, 190, 1.1), (100, 180, 1.2), (200, 190, 1.1), (200, 180, 1.2), (300, 180, 1.2);
-
-$line1-fox:(10, 1100),(0, 1950),(10, 2500), (10, 1880), (0, 1100);
-$line2-fox:(10, 870),(10, 1090),(10, 2600), (0, 3200), (0, 2000);
+$line1-fox: (10, 1300),(0, 1750),(10, 2500), (10, 1880), (0, 1650);
 //"https://fonts.googleapis.com/css?family=VT323"
 //Leaf function
  @mixin leaf() {
@@ -99,7 +77,7 @@ $line2-fox:(10, 870),(10, 1090),(10, 2600), (0, 3200), (0, 2000);
 //background
 #background {
     display: block;
-    height: 70%;
+    height: 75%;
     width: 100%;
     background-color: $sky;
     &:after {
@@ -111,35 +89,35 @@ $line2-fox:(10, 870),(10, 1090),(10, 2600), (0, 3200), (0, 2000);
 //Road & Line
 #road {
     display: block;
-    height: 30%;
+    height: 25%;
     width: 100%;
 }
-
+#tree {
+    height: 30%;
+    width: 100%;
+    border: 1px solid red;
+}
 .grass {
-    height: 20%;
+    height: 30%;
     background-color: $grass;
     border-top: 2px solid #83a250;
     width: 100%;
 }
 
 .route {
-    height: 60%;
+    height: 70%;
     background: $road;
     width: 100%;
 }
 
-.line1 > .triangular-tree {
+.grass > .triangular-tree {
     z-index: 10;
 }
-.line1 > .mini-tree{
+.grass > .mini-tree{
     z-index: 20;
 }
-.line1 > .fox {
+.grass > .fox {
     z-index: 30;
-}
-.line2 > .triangular-tree {
-    opacity: 0.8;
-    z-index: 200;
 }
 
 /** Tree **/
@@ -147,9 +125,7 @@ $line2-fox:(10, 870),(10, 1090),(10, 2600), (0, 3200), (0, 2000);
 .triangular-tree {
     width: 86px;
     height: 102px;
-    position: absolute;
-    top: 60%;
-    left: 10px;
+    top: calc(70% - 51px);
     transform: scale(0.9, 1.3);
     .tree {
         .part {
@@ -322,6 +298,8 @@ $line2-fox:(10, 870),(10, 1090),(10, 2600), (0, 3200), (0, 2000);
 .mini-tree {
     width: 36px;
     height: 25px;
+    top: calc(80% - 18px);
+
     position: absolute;
     z-index: 20;
     .tree {
@@ -365,83 +343,49 @@ $line2-fox:(10, 870),(10, 1090),(10, 2600), (0, 3200), (0, 2000);
 
 /** Location auto setting **/
 $tree1-count: 0;
-$tree2-count: 0;
 $mini1-count: 0;
-$mini2-count: 0;
 
 @for $i from 1 through length($line1-tree) {
-    .line1 .triangular-tree:nth-child(#{$i}) {
+    .grass .triangular-tree:nth-child(#{$i}) {
         $temp: nth($line1-tree, $i);
         $tree1-count: $tree1-count + nth($temp, 1);
         $top: nth($temp, 2);
         $size: nth($temp, 3);
         left: $tree1-count + 0px;
         $top: $top + 0px;
-        top: calc(53% + #{$top});
-        transform: scaleY($size);
-    }
-}
-
-@for $i from 1 through length($line2-tree) {
-    .line2 .triangular-tree:nth-child(#{$i}) {
-        $temp: nth($line2-tree, $i);
-        $tree2-count: $tree2-count + nth($temp, 1);
-        $top: nth($temp, 2);
-        $size: nth($temp, 3);
-        left: $tree2-count + 0px;
-        $top: $top + 0px;
-        top: calc(53% + #{$top});
+        // top: calc(59% + #{$top});
         transform: scaleY($size);
     }
 }
 
 @for $i from 1 through length($line1-minitree) {
-    .line1 > .mushroom:last-child .mini-tree:nth-child(#{$i}) {
+    .grass > .mushroom:last-child .mini-tree:nth-child(#{$i}) {
         $temp: nth($line1-minitree, $i);
         $mini1-count: $mini1-count + nth($temp, 2);
         $top: nth($temp, 1) + 0px;
         $left: nth($temp, 2) + 0px;
-        top: calc(69% + #{$top});
+        // top: calc(75% + #{$top});
         left: $mini1-count + 0px;
     }
 }
 
-@for $i from 1 through length($line2-minitree) {
-    .line2 > .mushroom:last-child .mini-tree:nth-child(#{$i}) {
-        $temp: nth($line2-minitree, $i);
-        $mini2-count: $mini2-count + nth($temp, 2);
-        $top: nth($temp, 1) + 0px;
-        $left: nth($temp, 2) + 0px;
-        top: calc(94% + #{$top});
-        left: $mini2-count + 0px;
-    }
-}
 $fox1-count: 0;
-$fox2-count: 0;
 @for $i from 1 through length($line1-fox) {
-    .line1 > .wolf > .fox:nth-child(#{$i}) {
+    .grass > .wolf > .fox:nth-child(#{$i}) {
         $temp: nth($line1-fox, $i);
         $fox1-count: $fox1-count + nth($temp, 2);
         $top: nth($temp, 1) + 0px;
-        top: calc(61% + #{$top});
+        // top: calc(61% + #{$top});
         left: $fox1-count + 0px;
     }
 }
 
-@for $i from 1 through length($line2-fox) {
-    .line2 > .wolf > .fox:nth-child(#{$i}) {
-        $temp: nth($line2-fox, $i);
-        $fox2-count: $fox2-count + nth($temp, 2);
-        $top: nth($temp, 1) + 0px;
-        top: calc(85% + #{$top});
-        left: $fox2-count + 0px;
-    }
-}
+
 //Train
 
 #train {
     left: 50%;
-    top: 75%;
+    top: 80%;
     position: fixed;
     z-index: 100;
     transform: rotateY(0);
@@ -860,7 +804,7 @@ $fox2-count: 0;
 /** Board **/
 
 .board {
-    height: 50%;
+    height: 55%;
     width: 4%;
     position: absolute;
     z-index: 10;
@@ -868,7 +812,7 @@ $fox2-count: 0;
         height: 100%;
         border-radius: 20px;
         .speaker, .center-button, .square {
-            border: 2px solid #aaa;
+            border: 2px solid #666;
             position: absolute;
         }
         .speaker {
@@ -895,31 +839,30 @@ $fox2-count: 0;
         .screen {
             height: 100%;
             outline: 0;
-            border-top: 20px solid #444;
-            border-bottom: 20px solid #444;
-            border-left: 50px solid #444;
-            border-right: 80px solid #444;
-            border-radius: 18px;
-            background-color: #000;
+            border-top: 20px solid #ccc;
+            border-bottom: 20px solid #ccc;
+            border-left: 50px solid #ccc;
+            border-right: 80px solid #ccc;
+            border-radius: 20px;
+            background: linear-gradient(to right, #444, #222);
             .section {
                 width: 100%;
                 height: 100%;
                 display: block;
                 float: left;
-                background-image: url("image.jpg");
-                //TODO make title
+                border: 1px solid #aaa;
                 .box {
                     width: 100%;
                     height: 20%;
                     display: flex;
-                    color: white;
+                    color: #eee;
                     font-size: 30px;
                     .title {
                         width: 25%;
                         height: 100%;
-                        border-right: 1px solid white;
-                        color: white;
-                        font-size: 20px;
+                        border-right: 1px solid #777;
+                        color: #eee;
+                        font-size: 18px;
                         text-align: center;
                         padding-top: 15px;
                     }
@@ -936,6 +879,23 @@ $fox2-count: 0;
                             background-color: $color;
                             border-radius: 5px;
                         }
+                        & > div:after {
+                            margin: 10px;
+                            float: left;
+                            margin-left: 4px;
+                            text-align: center;
+                            font-size: 12px;
+                            font-weight: 300;
+                            opacity: 0.9;
+                        }
+
+                        $app: ('Basic', 'Core', 'Expert', 'Veteran', 'Master');
+                        @for $j from 1 through 5 {
+                            & > div:nth-child(#{$j}):after {
+                                content: nth($app, $j);
+                            }
+                        }
+
                         .kakao {
                             @include app(#ffff00);
                             padding-top: 10px;
@@ -955,6 +915,18 @@ $fox2-count: 0;
                                 font-size: 35px;
                                 font-weight: 700;
                                 text-align: center;
+                                margin-bottom: -15px;
+                            }
+                        }
+                        .naver {
+                            @include app(#73c72f);
+                            padding-top: 3px;
+                            .logo {
+                                color: white;
+                                font-size: 30px;
+                                font-weight: 700;
+                                text-align: center;
+                                margin-bottom: -10px;
                             }
                         }
                         .insta {
@@ -965,6 +937,7 @@ $fox2-count: 0;
                                 width: 30px;
                                 height: 30px;
                                 margin-left: 5px;
+                                margin-bottom: -5px;
                                 border: 3px solid white;
                                 border-radius: 5px;
                             }
@@ -977,9 +950,14 @@ $fox2-count: 0;
                                 font-size: 35px;
                                 font-weight: 700;
                                 text-align: center;
+                                margin-bottom: -15px;
+
                             }
                         }
                     }
+                }
+                .box-title {
+                    padding: 10px 0 0 20px;
                 }
             }
         }
@@ -988,7 +966,7 @@ $fox2-count: 0;
         height: 100%;
         background-color: #243715;
         border: 8px solid #a67f3f;
-        border-radius: 3px;
+        border-radius: 4px;
         font-family: 'Shadows Into Light', cursive;
         font-size: 20px;
         letter-spacing: 3px;
@@ -1005,7 +983,7 @@ $fox2-count: 0;
             display: block;
             width: 50%;
             height: 100%;
-            padding: 5%;
+            padding: 4%;
             position: absolute;
         }
     }
@@ -1014,8 +992,8 @@ $fox2-count: 0;
         width: 30px;
         position: absolute;
         background-color: #966f33;
-        border-left: 2px solid #4c381a;
-        border-right: 2px solid #4c381a;
+        border-left: 2px solid #725427;
+        border-right: 2px solid #725427;
         top: -12%;
         z-index: -10;
     }
@@ -1031,16 +1009,52 @@ $fox2-count: 0;
     .scoreboard {
         width: 80%;
         height: 100%;
-        border: 10px solid #222;
+        border: 20px solid #222;
+        background-color: #444;
+        .screen {
+            .line {
+                width: 90%;
+                height: 5px;
+                margin-top: 12%;
+                margin-left: 10%;
+                background-color: white;
+            }
+            @for $k from 1 through 7 {
+                .point:nth-child(#{$k}) {
+                    margin-left: 7 * ($k - 1) + %;
+                }
+            }
+
+            .point {
+                position: absolute;
+                top: calc(50% - 18px);
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                border-radius: 50%;
+                &:after, &:before {
+                    display: block;
+                    transform: rotate(90deg);
+                }
+                &:before {
+                    float: right;
+                    margin-top: -30px;
+                    content: 'test';
+                }
+                // &:after {
+                //     content: 'after';
+                // }
+            }
+        }
         & > .boardleg:nth-child(1) {
-            left: -15%;
+            left: -10%;
             &:before {
                 content: "";
                 margin-top: 30px;
                 margin-left: -10px;
                 display: block;
-                width: 110px;
-                height: 50px;
+                width: 150px;
+                height: 70px;
                 border: 10px solid #f1f1f1;
                 border-right: 0px;
             }
@@ -1049,41 +1063,41 @@ $fox2-count: 0;
                 margin-top: 80px;
                 margin-left: -10px;
                 display: block;
-                width: 110px;
-                height: 50px;
+                width: 150px;
+                height: 70px;
                 border: 10px solid #f1f1f1;
                 border-right: 0px;
             }
         }
 
         & > .boardleg:nth-child(2) {
-            right: 5%;
+            right: 10%;
             &:before {
                 content: "";
                 margin-top: 30px;
-                margin-left: -50px;
+                margin-left: -74px;
                 display: block;
-                width: 110px;
-                height: 50px;
+                width: 150px;
+                height: 70px;
                 border: 10px solid #f1f1f1;
                 border-left: 0px;
             }
             &:after {
                 content: "";
                 margin-top: 80px;
-                margin-left: -50px;
+                margin-left: -74px;
                 display: block;
-                width: 110px;
-                height: 50px;
+                width: 150px;
+                height: 70px;
                 border: 10px solid #f1f1f1;
                 border-left: 0px;
             }
         }
 
         .boardleg {
-            margin-top: -10px;
+            margin-top: -2%;
             position: absolute;
-            width: 10%;
+            width: 6%;
             height: 130%;
             border: 10px solid #f1f1f1;
             border-bottom: 0px;
