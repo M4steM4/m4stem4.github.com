@@ -1032,18 +1032,10 @@ $fox1-count: 0;
                 height: 20px;
                 background-color: white;
                 border-radius: 50%;
-                &:after, &:before {
-                    display: block;
-                    transform: rotate(90deg);
+                &:first-child {
+                    top: 50%;
+                    border: 1px solid #e00;
                 }
-                &:before {
-                    float: right;
-                    margin-top: -30px;
-                    content: 'test';
-                }
-                // &:after {
-                //     content: 'after';
-                // }
             }
         }
         & > .boardleg:nth-child(1) {
