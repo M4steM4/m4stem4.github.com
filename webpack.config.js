@@ -3,20 +3,15 @@ const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractCSS = new ExtractTextPlugin('[name].bundle.css')
 
-const extractCommons = new webpack.optimize.CommonsChunkPlugin({
-    name: 'commons',
-    filename: 'common.js'
-})
-
 const config = {
     context: path.resolve(__dirname, 'src'),
     entry: {
-        app: './index.js'
+        app: './js/index.js'
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/dist/',
-        filename: '[name].bundle.js'
+        filename: '[name].js'
     },
     module: {
         rules: [{
@@ -41,13 +36,12 @@ const config = {
             test: /\.(png|jpg)$/,
             use: [{
                 loader: 'url-loader',
-                options: { limit: 10000 } // 10k 이하 이미지는 base64 문자열로 변환
+                options: { limit: 10000 }
             }]
         }]
     },
     plugins: [
-        new webpack.NamedModulesPlugin(),
-        // extractCommons,
+        new webpack.NamedModulesPlugin()
     ]
 }
 
