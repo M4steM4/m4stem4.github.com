@@ -5,10 +5,17 @@ if (module.hot) {
 
 import './index.scss';
 
-// function changeScroll(delta) {
-//     $(window).scrollTop(0);
-//     $(window).scrollLeft(-delta + $(this).scrollLeft());
-// }
+function block(location, num) {
+    var text = "";
+    for(var i = 0; i < num; i++) {
+        text += `<div class="brick"></div>`;
+    }
+    console.log('Success');
+    location.html(text);
+}
+
+block($('.line1'), 32);
+block($('.line2'), 32);
 
 $(window).on('mousewheel', function(e){
     var wheelDelta = e.originalEvent.wheelDelta;
@@ -16,12 +23,7 @@ $(window).on('mousewheel', function(e){
         $(this).scrollTop(0);
         $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
     } else {
-        if ($(this).scrollLeft() > 5000) {
-            $(this).scrollLeft(0);
-            $(this).scrollTop(-wheelDelta + $(this).scrollLeft());
-        } else {
-            $(this).scrollTop(0);
-            $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
-        }
+        $(this).scrollTop(0);
+        $(this).scrollLeft(-wheelDelta + $(this).scrollLeft());
     }
 });

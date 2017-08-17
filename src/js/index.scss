@@ -1,43 +1,320 @@
-.layer1 {
-    width: 10000px;
+// .layer1 {
+//     width: 10000px;
+//     height: 100%;
+//     position: absolute;
+//     float: left;
+// }
+//     .tag {
+//         margin-left: 50%;
+//         width: 50%;
+//         height: 200%;
+//         background-color: red;
+//     }
+//     .sky {
+//         width: 50%;
+//         height: 80%;
+//         background-color: #ccffff;
+//     }
+//
+//     .land {
+//         position: absolute;
+//         width: 50%;
+//         height: 20%;
+//
+//         .grass {
+//             width: 100%;
+//             height: 20%;
+//             background-color: #77b300;
+//         }
+//
+//         .soil {
+//             width: 100%;
+//             height: 80%;
+//             background-color: #805500;
+//         }
+//     }
+// }
+//
+// .fix {
+//     margin-left: 6%;
+//     padding-top: 2%;
+//     font-size: 100px;
+//     color: black;
+// }
+
+.page {
+    width: 1000px;
     height: 100%;
     position: absolute;
     float: left;
+    background-color: #82a1fc;
+}
 
-    .tag {
-        margin-left: 50%;
-        width: 50%;
-        height: 200%;
-        background-color: red;
+
+/*
+ * Parameters
+ */
+$pixel_size: 4px;
+$time: 1.5s;
+$colors: #D80000 #706800 #F8AB00 #FFA542 #FF6410 #000000 #cc5800 #f0cbc1;
+
+/*
+ * color pixel matrix
+ */
+$mario_normal:
+  0 0 0 1 1 1 1 1,
+  0 0 1 1 1 1 1 1 1 1 1,
+  0 0 2 2 2 3 3 2 3,
+  0 2 3 2 3 3 3 2 3 3 3,
+  0 2 3 2 2 3 3 3 2 3 3 3,
+  0 2 2 3 3 3 3 2 2 2 2,
+  0 0 0 3 3 3 3 3 3 3,
+  0 0 2 2 1 2 2 2,
+  0 2 2 2 1 2 2 1 2 2 2,
+  2 2 2 2 1 1 1 1 2 2 2 2,
+  3 3 2 1 3 1 1 3 1 2 3 3,
+  3 3 3 1 1 1 1 1 1 3 3 3,
+  3 3 1 1 1 1 1 1 1 1 3 3,
+  0 0 1 1 1 0 0 1 1 1,
+  0 2 2 2 0 0 0 0 2 2 2,
+  2 2 2 2 0 0 0 0 2 2 2 2;
+
+$mario_jump:
+  0 0 0 0 0 0 0 0 0 0 0 0 0 3 3 3,
+  0 0 0 0 0 0 1 1 1 1 1 0 0 3 3 3,
+  0 0 0 0 0 1 1 1 1 1 1 1 1 1 3 3,
+  0 0 0 0 0 2 2 2 3 3 2 3 0 2 2 2,
+  0 0 0 0 2 3 2 3 3 3 2 3 3 2 2 2,
+  0 0 0 0 2 3 2 2 3 3 3 2 3 3 3 2,
+  0 0 0 0 2 2 3 3 3 3 2 2 2 2 2,
+  0 0 0 0 0 0 3 3 3 3 3 3 3 2,
+  0 0 2 2 2 2 2 1 2 2 2 1 2,
+  0 2 2 2 2 2 2 2 1 2 2 2 1 0 0 2,
+  3 3 2 2 2 2 2 2 1 1 1 1 1 0 0 2,
+  3 3 3 0 1 1 2 1 1 3 1 1 3 1 2 2,
+  0 3 0 2 1 1 1 1 1 1 1 1 1 1 2 2,
+  0 0 2 2 2 1 1 1 1 1 1 1 1 1 2 2,
+  0 2 2 2 1 1 1 1 1 1 1,
+  0 2 0 0 1 1 1 1 ;
+
+$block:
+  5 5 5 5 5 5 5 5 5 5 5 5 5 5 5 5,
+  5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 6,
+  5 4 6 4 4 4 4 4 4 4 4 4 4 6 4 6,
+  5 4 4 4 4 5 5 5 5 5 4 4 4 4 4 6,
+  5 4 4 4 5 5 6 6 6 5 5 4 4 4 4 6,
+  5 4 4 4 5 5 6 4 4 5 5 6 4 4 4 6,
+  5 4 4 4 5 5 6 4 4 5 5 6 4 4 4 6,
+  5 4 4 4 4 6 6 4 5 5 5 6 4 4 4 6,
+  5 4 4 4 4 4 4 5 5 6 6 6 4 4 4 6,
+  5 4 4 4 4 4 4 5 5 6 4 4 4 4 4 6,
+  5 4 4 4 4 4 4 4 6 6 4 4 4 4 4 6,
+  5 4 4 4 4 4 4 5 5 4 4 4 4 4 4 6,
+  5 4 4 4 4 4 4 5 5 6 4 4 4 4 4 6,
+  5 4 6 4 4 4 4 4 6 6 4 4 4 6 4 6,
+  5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 6,
+  6 6 6 6 6 6 6 6 6 6 6 6 6 6 6 6;
+
+$coin:
+  0 0 0 0 0 4 4 4 4 6 6 0 0 0 0 0,
+  0 0 0 0 4 4 4 4 4 4 6 6 0 0 0 0,
+  0 0 0 0 4 4 5 5 4 4 6 6 0 0 0 0,
+  0 0 0 4 4 5 4 4 6 4 4 6 6 0 0 0,
+  0 0 0 4 4 5 4 4 6 4 4 6 6 0 0 0,
+  0 0 0 4 4 5 4 4 6 4 4 6 6 0 0 0,
+  0 0 0 4 4 5 4 4 6 4 4 6 6 0 0 0,
+  0 0 0 4 4 5 4 4 6 4 4 6 6 0 0 0,
+  0 0 0 4 4 5 4 4 6 4 4 6 6 0 0 0,
+  0 0 0 0 4 4 5 5 4 4 6 6 0 0 0 0,
+  0 0 0 0 4 4 4 4 4 4 6 6 0 0 0 0,
+  0 0 0 0 0 4 4 4 4 6 6 0 0 0 0 0;
+
+$brick :
+  7 8 8 8 8 8 8 8 8 6 7 8 8 8 8 7,
+  8 7 7 7 7 7 7 7 7 6 8 7 7 7 7 6,
+  8 7 7 7 7 7 7 7 7 6 8 7 7 7 7 6,
+  8 7 7 7 7 7 7 7 7 6 8 7 7 7 7 6,
+  8 7 7 7 7 7 7 7 7 6 8 6 7 7 7 6,
+  8 7 7 7 7 7 7 7 7 6 7 6 6 6 6 7,
+  8 7 7 7 7 7 7 7 7 6 8 8 8 8 8 6,
+  8 7 7 7 7 7 7 7 7 6 8 7 7 7 7 6,
+  8 7 7 7 7 7 7 7 7 6 8 7 7 7 7 6,
+  8 7 7 7 7 7 7 7 7 6 8 7 7 7 7 6,
+  6 6 7 7 7 7 7 7 6 8 7 7 7 7 7 6,
+  8 8 6 6 7 7 7 7 6 8 7 7 7 7 7 6,
+  8 7 8 8 6 6 6 6 8 7 7 7 7 7 7 6,
+  8 7 7 7 8 8 8 6 8 7 7 7 7 7 7 6,
+  8 7 7 7 7 7 7 6 8 7 7 7 7 7 6 6,
+  7 6 6 6 6 6 6 7 8 6 6 6 6 6 6 7;
+
+
+/*
+ * Draw Mixin for create box-shadows
+ */
+@mixin draw ($pixels) {
+  $shadow: 0 0 0;
+  $row_number: 1;
+  @each $row in $pixels {
+    $column_number: -8; // Center for better rotateY effect
+    @each $color_index in $row {
+      @if ($color_index > 0){
+        $shadow: $shadow, $column_number * $pixel_size $row_number * $pixel_size nth($colors, $color_index);
+      }
+      $column_number: $column_number + 1;
     }
-    .sky {
-        width: 50%;
-        height: 80%;
-        background-color: #ccffff;
+    $row_number: $row_number + 1;
+  }
+  box-shadow: $shadow;
+}
+
+
+/*
+ * Reset ans body floor background
+ */
+html {
+    min-height: $pixel_size * 65;
+}
+// html, body {
+//   height: 100%;
+//   min-height: $pixel_size * 65;
+//   overflow: hidden;
+// }
+
+// body {
+//   padding-top: $pixel_size * 48;
+//   @include background-image(linear-gradient(
+//       #6B8CFF,
+//       #6B8CFF $pixel_size * 65,
+//       #D54B00 $pixel_size * 65,
+//       #D54B00));
+// }
+
+/*
+ * Mario, Block(after), Coin(before)
+ */
+
+ @mixin clearfix() {
+     &, &:before, &:after  {
+       margin: 0 auto;
+       height: $pixel_size;
+       width: $pixel_size;
+     }
+
+     &:before, &:after  {
+       content: "";
+       display: block;
+       position: absolute;
+       top: $pixel_size * 16;
+     }
+ }
+
+.mario {
+  @include draw($mario_normal);
+  position: absolute;
+  left: 50%;
+  top: $pixel_size * 120;
+  animation: jump $time infinite ease-out;
+  -webkit-animation: jump $time infinite ease-out;
+  @include clearfix();
+}
+
+.block {
+    @include clearfix();
+
+    &:before {
+      -webkit-animation: coin_animation $time infinite ease-in-out;
+      animation: coin_animation $time infinite ease-in-out;
+      @include draw($coin);
     }
 
-    .land {
+    &:after {
+      -webkit-animation: block_animation $time infinite ease-out;
+      animation: block_animation $time infinite ease-out;
+      @include draw($block);
+    }
+}
+
+.bricks {
+    width: 100%;
+    height: 10px;
+    position: absolute;
+    top: $pixel_size * 136; //fix line
+
+    .line2 {
+        width: 100%;
+        height: 10px;
         position: absolute;
-        width: 50%;
-        height: 20%;
+        top: $pixel_size * 16;
+    }
 
-        .grass {
-            width: 100%;
-            height: 20%;
-            background-color: #77b300;
-        }
+}
 
-        .soil {
-            width: 100%;
-            height: 80%;
-            background-color: #805500;
+.brick {
+    @include clearfix;
+    position: absolute;
+    display: inline-block;
+    float: left;
+    -webkit-animation: block_animation $time infinite ease-out;
+    animation: block_animation $time infinite ease-out;
+    @include draw($brick);
+
+    @for $i from 0 through 31 {
+        &:nth-child(#{$i}) {
+            left: $pixel_size * $i * 16;
         }
     }
 }
+// @keyframes jump {
+//   0% {
+//     @include draw($mario_jump);
+//   }
+//   10% {
+//     margin-top: -($pixel_size * 16);
+//   }
+//   20% {
+//     @include draw($mario_jump);
+//   }
+//   20.1% {
+//     margin-top: 0;
+//     @include draw($mario_normal);
+//   }
+// }
 
-.fix {
-    margin-left: 6%;
-    padding-top: 2%;
-    font-size: 100px;
-    color: black;
-}
+// @keyframes block_animation {
+//   10% {
+//     -webkit-transform: translateY(0);
+//     transform: translateY(0);
+//   }
+//   15% {
+//     -webkit-transform: translateY(-100% * 4);
+//     transform: translateY(-100% * 4);
+//   }
+//   20% {
+//     -webkit-transform: translateY(0);
+//     transform: translateY(0);
+//   }
+// }
+//
+//
+// @keyframes coin_animation {
+//   10% {
+//     -webkit-transform: translateY(0);
+//     transform: translateY(0);
+//   }
+//   20% {
+//     -webkit-transform: translateY(-100% * 24) rotateY(720deg);
+//     transform: translateY(-100% * 24) rotateY(720deg);
+//   }
+//   30% {
+//     -webkit-transform: translateY(0);
+//     transform: translateY(0);
+//   }
+//   40% {
+//     -webkit-transform: translateY(-100% * 16);
+//     transform: translateY(-100% * 16);
+//   }
+//   50% {
+//     -webkit-transform: translateY(0);
+//     transform: translateY(0);
+//   }
+// }
