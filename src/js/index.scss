@@ -210,11 +210,11 @@ html {
 
 .mario {
   @include draw($mario_normal);
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: $pixel_size * 120;
-  animation: jump $time infinite ease-out;
-  -webkit-animation: jump $time infinite ease-out;
+  // animation: jump $time infinite ease-out;
+  // -webkit-animation: jump $time infinite ease-out;
   @include clearfix();
 }
 
@@ -234,15 +234,15 @@ html {
     }
 }
 
+
+
 .bricks {
     width: 100%;
     height: 10px;
     position: absolute;
     top: $pixel_size * 136; //fix line
 
-    .line2 {
-        width: 100%;
-        height: 10px;
+    .line:last-child {
         position: absolute;
         top: $pixel_size * 16;
     }
@@ -258,27 +258,39 @@ html {
     animation: block_animation $time infinite ease-out;
     @include draw($brick);
 
-    @for $i from 0 through 31 {
+    @for $i from 0 through 15 {
         &:nth-child(#{$i}) {
             left: $pixel_size * $i * 16;
         }
     }
 }
-// @keyframes jump {
-//   0% {
-//     @include draw($mario_jump);
-//   }
-//   10% {
-//     margin-top: -($pixel_size * 16);
-//   }
-//   20% {
-//     @include draw($mario_jump);
-//   }
-//   20.1% {
-//     margin-top: 0;
-//     @include draw($mario_normal);
-//   }
-// }
+
+.hole {
+    @include clearfix;
+    @include draw($brick);
+    position: absolute;
+    opacity: 0;
+}
+
+
+// Animation
+
+
+@keyframes jump {
+  0% {
+    @include draw($mario_jump);
+  }
+  15% {
+    margin-top: -($pixel_size * 32);
+  }
+  30% {
+    @include draw($mario_jump);
+  }
+  30.1% {
+    margin-top: 0;
+    @include draw($mario_normal);
+  }
+}
 
 // @keyframes block_animation {
 //   10% {
