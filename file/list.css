@@ -1,0 +1,25 @@
+div {
+    margin: 10px 10px 10px 30px;
+}
+
+#main {
+    font-size: 30px;
+}
+
+.list {
+    font-size: 15px;
+}
+
+.list:before {
+    content: '* ';
+}
+
+.title {
+    margin-left: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title:before {
+    content: '';
+}
